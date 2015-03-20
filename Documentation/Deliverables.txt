@@ -1,0 +1,29 @@
+Room:
+	Creating room with walls, obstacles, floor and agents
+
+Pathing:
+	Agents pathing through a room
+
+Building:
+	Connection with multiple rooms.
+
+Pathing2:
+	Agents pathing through the building
+
+Parsing:
+	Parsing bulding design from external file that can be modified for the user purposes
+
+Applying Building Design:
+	Create Building with the specifications of the external file
+
+Agents:
+	Agents interaction and states
+
+Agents2:
+	Add different types of agents towards agent behavior and interaction
+
+Emergency:
+	Creation of an emergency within the bulding for the agents to react to
+
+Graphics:
+	Add 2d graphics to the simulation for easy understanding of the environment
