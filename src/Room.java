@@ -3,11 +3,13 @@ import java.util.*;
 public class Room
 {
 	private int wall = 0;
-	private int panickedPrio = (new PanickedAgent()).getPriority();
+
+
 	private int obstacle = 1;
 	private int floor = 2;
 	private int door = 3;
 	private int agentsPlaced = 0;
+	ArrayList<Agent> queue = new ArrayList<Agent>();
 	private int totalFloors = 0;
 	//    0 1 2 3
 	//    _ _ _ _
@@ -21,17 +23,65 @@ public class Room
 		test();
 	}
 
-	public void updateRoom()
+	public void initiateRoom()
 	{
-		ArrayList<Agent> queue = new ArrayList<Agent>();
+		ArrayList<Integer> priorities = new ArrayList<Integer>();
 
 		for(int i = 0; i < space.length; i++)
 		{
 			for(int j = 0; j < space[i].length; j++)
 			{
-
+				if(space[i][j].hasAgent())
+				{
+					int temp = space[i][j].getAgent().getPriority();
+					if(!priorities.contains(temp))
+					{
+						priorities.add(temp);
+					}
+				}
 			}
 		}
+
+		while(priorities.isEmpty())
+		{
+			int highest = getHighest(priorities);
+			for(int i = 0; i < space.length; i++)
+			{
+				for(int j = 0; j < space[i].length; j++)
+				{
+					if(space[i][j].hasAgent())
+					{
+						if(space[i][j].getAgent().getPriority() == highest)
+						{
+							queue.add(space[i][j].getAgent());
+						}
+					}
+				}
+			}	
+		}
+
+	}
+
+	private int getHighest(ArrayList<Integer> in)
+	{
+		Iterator<Integer> iterator = in.iterator();
+		int temp = 0;
+		while(iterator.hasNext())
+		{
+			int tempNext = iterator.next();
+			if(tempNext >= temp)
+			{
+				temp = tempNext;
+			}
+		}
+
+		in.remove((Integer)(temp));
+		return temp;
+	}
+
+	public void updateRoom()
+	{
+
 	}
 
 	private void test()

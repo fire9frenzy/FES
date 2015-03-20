@@ -1,3 +1,4 @@
+import java.util.*;
 public class Simulation
 {
 	public static void main(String[] args)
@@ -5,5 +6,8 @@ public class Simulation
 		Room testRoom = new Room();
 
 		System.out.println(testRoom);
+
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+
 	}
 }
