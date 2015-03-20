@@ -42,7 +42,7 @@ public class Room
 			}
 		}
 
-		while(priorities.isEmpty())
+		while(!priorities.isEmpty())
 		{
 			int highest = getHighest(priorities);
 			for(int i = 0; i < space.length; i++)

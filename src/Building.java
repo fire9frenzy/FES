@@ -6,6 +6,15 @@ public class Building
 	{
 
 	}
+
+	public void initiate()
+	{
+		for(int i = 0; i < rooms.size(); i++)
+		{
+			rooms.get(i).initiateRoom();
+		}
+	}
+
 	public void addRoom(Room r)
 	{
 		rooms.add(r);
