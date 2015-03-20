@@ -16,7 +16,7 @@ public class Space
 
  	public void setAgent(Agent agent)
  	{
- 		this.agent = agent;
+ 		this.agent= agent;
  	}
 
  	public Agent getAgent()
@@ -47,7 +47,7 @@ public class Space
  	{
  		if(agent != null)
  		{
- 			return "A";
+ 			return agent.getType();
  		}
  		if(type == 0)
  		{

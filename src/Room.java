@@ -1,9 +1,14 @@
+import java.util.*;
+
 public class Room
 {
 	private int wall = 0;
 	private int obstacle = 1;
 	private int floor = 2;
 	private int door = 3;
+	private Agent[] queue;
+	private int agentsPlaced = 0;
+	private int totalFloors = 0;
 	//    0 1 2 3
 	//    _ _ _ _
 	// 0 | | | | |  x = (1,2)
@@ -46,9 +51,50 @@ public class Room
 		{
 			for(int j = 1; j < space[i].length -1; j++)
 			{
+				totalFloors++;
 				space[i][j] = new Space(floor);
 			}
 		}
+	}
+
+	public void setAgent(String agentType)
+	{
+		agentsPlaced++;
+		Random random = new Random();
+		ArrayList<Location> available = new ArrayList<Location>();
+
+		for(int i = 0; i < space.length; i++)
+		{
+			for(int j = 0; j < space[i].length; j++)
+			{
+				if((space[i][j].getType() == 1 || space[i][j].getType() == 2) && (!space[i][j].hasAgent()))
+				{
+					available.add(new Location(i,j));
+				}
+			}
+		}
+
+		int index = random.nextInt(available.size());
+
+
+		space[available.get(index).getX()][available.get(index).getY()].setAgent(createAgent(agentType));
+	}
+
+	private Agent createAgent(String agentType)
+	{
+		if(agentType.compareToIgnoreCase("C") == 0)
+		{
+			return new CalmAgent();
+		}
+		else
+		{
+			return new PanickedAgent();	
+		}
+	}
+
+	public boolean full()
+	{
+		return (agentsPlaced == totalFloors);
 	}
 
 	public String toString()
