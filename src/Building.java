@@ -24,9 +24,9 @@ public class Building
 		for (int i = 0; i < total; ++i)
 		{
 			// pick a type
-			String type = "P";
-			// if (Math.random() > 0.5)
-			// 	type = "P";
+			String type = "C";
+			if (Math.random() > 0.5)
+				type = "P";
 			// pick a room
 			int r = (int)Math.floor(Math.random() * rooms.size());
 			rooms.get(r).setAgent(type);
