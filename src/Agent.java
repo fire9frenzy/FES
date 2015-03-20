@@ -19,6 +19,14 @@ public class Agent
 	{
 		target = t;
 	}
+	public void setType(String t)
+	{
+		type = t;
+	}
+	public void setPriority(int i)
+	{
+		priority = i;
+	}
 	// this is not final
 	public Location getNextMove()
 	{
