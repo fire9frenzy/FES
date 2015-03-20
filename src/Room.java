@@ -81,7 +81,10 @@ public class Room
 
 	public void updateRoom()
 	{
-
+		for(int i = 0; i < queue.size(); i++)
+		{
+			System.out.println(queue.get(i).getType());
+		}
 	}
 
 	private void test()
