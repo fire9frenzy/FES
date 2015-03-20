@@ -1,9 +1,9 @@
 public class PanickedAgent extends Agent 
 {
-	private final int priority = 5;
-
-	public int getPriority()
+	public PanickedAgent()
 	{
-		return priority;
+		super();
+		setPriority(5);
+		setType("P");
 	}
 }
