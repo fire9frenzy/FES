@@ -1,3 +1,4 @@
+import java.util.*;
 public class Simulation
 {
 	public static void main(String[] args)
@@ -6,9 +7,7 @@ public class Simulation
 		lab.addRoom(new Room());
 		lab.addRoom(new Room());
 		lab.placeAgents(5);
-
 		// Room testRoom = new Room();
-
 		System.out.println(lab);
 	}
 }
