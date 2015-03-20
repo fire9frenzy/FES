@@ -7,6 +7,7 @@ public class Simulation
 		lab.addRoom(new Room());
 		lab.addRoom(new Room());
 		lab.placeAgents(5);
+		lab.initiate();
 		// Room testRoom = new Room();
 		System.out.println(lab);
 	}
