@@ -1,8 +1,10 @@
+// import java.util.ArrayList;
 public class Agent
 {
 	private Location target = null;
 	private Location position = null;
 	private String type = "C";
+	private int priority = 1;
 	public Agent()
 	{
 
@@ -17,14 +19,18 @@ public class Agent
 	{
 		target = t;
 	}
-	public Location move()
+	// this is not final
+	public Location getNextMove()
 	{
+
 		return null;
 	}
+	// if the room moves the agent update its Position
 	public void updatePosition(Location p)
 	{
 		position = p;
 	}
+	// this is where pathfinding goes. It will probably be really hard
 	public void ceatePath()
 	{
 
@@ -36,5 +42,9 @@ public class Agent
 	public String getType()
 	{
 		return type;
+	}
+	public int getPriority()
+	{
+		return priority;
 	}
 }
