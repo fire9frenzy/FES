@@ -3,10 +3,10 @@ import java.util.*;
 public class Room
 {
 	private int wall = 0;
+	private int panickedPrio = (new PanickedAgent()).getPriority();
 	private int obstacle = 1;
 	private int floor = 2;
 	private int door = 3;
-	private Agent[] queue;
 	private int agentsPlaced = 0;
 	private int totalFloors = 0;
 	//    0 1 2 3
@@ -19,6 +19,19 @@ public class Room
 	public Room()
 	{	
 		test();
+	}
+
+	public void updateRoom()
+	{
+		ArrayList<Agent> queue = new ArrayList<Agent>();
+
+		for(int i = 0; i < space.length; i++)
+		{
+			for(int j = 0; j < space[i].length; j++)
+			{
+
+			}
+		}
 	}
 
 	private void test()
@@ -76,8 +89,8 @@ public class Room
 
 		int index = random.nextInt(available.size());
 
-
-		space[available.get(index).getX()][available.get(index).getY()].setAgent(createAgent(agentType));
+		Agent temp = createAgent(agentType);
+		space[available.get(index).getX()][available.get(index).getY()].setAgent(temp);
 	}
 
 	private Agent createAgent(String agentType)
