@@ -22,7 +22,6 @@ public class Agent
 	// this is not final
 	public Location getNextMove()
 	{
-
 		return null;
 	}
 	// if the room moves the agent update its Position

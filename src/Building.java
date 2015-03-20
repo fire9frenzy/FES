@@ -1,7 +1,33 @@
+import java.util.ArrayList;
 public class Building
 {
+	public ArrayList<Room> rooms = new ArrayList<Room>();
 	public Building()
 	{
-		
+
+	}
+	public void addRoom(Room r)
+	{
+		rooms.add(r);
+	}
+	public void placeAgents(int total)
+	{
+		for (int i = 0; i < total; ++i)
+		{
+			// pick a type
+			String type = "C";
+			// pick a room
+			int r = (int)Math.floor(Math.random() * rooms.size());
+			rooms.get(r).setAgent(type);
+		}
+	}
+	public String toString()
+	{
+		String out = "";
+		for (int i = 0; i < rooms.size(); ++i)
+		{
+			out += rooms.get(i) + "\n";
+		}
+		return out;
 	}
 }
