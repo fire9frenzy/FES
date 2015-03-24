@@ -15,6 +15,14 @@ public class Building
 		}
 	}
 
+	public void update()
+	{
+		for(int i = 0; i < rooms.size(); i++)
+		{
+			rooms.get(i).updateRoom();
+		}		
+	}
+
 	public void addRoom(Room r)
 	{
 		rooms.add(r);

@@ -10,6 +10,7 @@ public class Room
 	private int door = 3;
 	private int agentsPlaced = 0;
 	ArrayList<Agent> queue = new ArrayList<Agent>();
+	private ArrayList<Location> doorLocation = new ArrayList<Location>();
 	private int totalFloors = 0;
 	//    0 1 2 3
 	//    _ _ _ _
@@ -60,6 +61,8 @@ public class Room
 			}	
 		}
 
+		setValues();
+
 	}
 
 	private int getHighest(ArrayList<Integer> in)
@@ -81,10 +84,7 @@ public class Room
 
 	public void updateRoom()
 	{
-		for(int i = 0; i < queue.size(); i++)
-		{
-			System.out.println(queue.get(i).getType());
-		}
+		
 	}
 
 	private void test()
@@ -106,6 +106,7 @@ public class Room
 			if(i == 9)
 			{
 				space[i][0] = new Space(door);
+				doorLocation.add(new Location(i,0));
 			}
 			else
 			{
@@ -175,5 +176,31 @@ public class Room
 			test = test +"\n";
 		}
 		return test;
+	}
+
+	//private Function setValues()
+	//input: non
+	//output: non
+	//description: it will set the values for all the spaces within the room
+	//the door will have a value of 0 (zero) if it leads to the outside, else will have the value of the door 
+	//connecting to the room +1. the values will increase by 1 for all adjecent spaces (not including walls)
+	//and so on
+	//obstacles will have an increase value of +2
+	//eg:
+	//WWWWWWWWWWW
+	//W|4|4|4|4|W
+	//W|3|3|3|4|W
+	//W|2|2|3|4|W
+	//W|1|2|3|4|W
+	//0|1|2|3|4|W
+	//W|1|2|3|4|W
+	//W|2|2|3|4|W
+	//W|3|3|3|4|W
+	//W|4|4|4|4|W
+	//WWWWWWWWWWW
+
+	private void setValues()
+	{
+
 	}
 }
