@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Space
 {
 	//Type indicates the type of space
@@ -8,6 +10,7 @@ public class Space
  	private int type = 0;
  	private int dimension = 1;
  	Agent agent = null;
+ 	private int[] values;
  	//dimension 1x1 meters
  	public Space(int type)
  	{
@@ -65,6 +68,28 @@ public class Space
  		return " ";
  	}
 
+ 	public void setPossibleDoors(int sizeValues)
+ 	{
+ 		values = new int[sizeValues];
+ 		for(int i = 0; i < values.length; i++)
+ 		{
+ 			values[i] = -1;
+ 		}
+ 	}
+
+ 	public void setValueAt(int value, int index)
+ 	{
+ 		values[index] = value;
+ 	}
+
+ 	public int getValueAt(int index)
+ 	{
+ 		return values[index];
+ 	}
 
 
+ 	public boolean isValueSet(int index)
+ 	{
+ 		return !(values[index]==-1);
+ 	}
 }
