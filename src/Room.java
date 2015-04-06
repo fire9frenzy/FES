@@ -82,7 +82,16 @@ public class Room
 
 	public void updateRoom()
 	{
-		
+		for(int i = 0; i < space.length; i++)
+		{
+			for(int j = 0; j < space[i].length; j++)
+			{
+				if(space[i][j].hasAgent())
+				{
+					space[i][j].getAgent().getNextMove(doorLocation.size(),space);
+				}
+			}
+		}
 	}
 
 	private void test()
@@ -145,8 +154,9 @@ public class Room
 		}
 
 		int index = random.nextInt(available.size());
-
+		Location location = available.get(index);
 		Agent temp = createAgent(agentType);
+		temp.updatePosition(location);
 		space[available.get(index).getX()][available.get(index).getY()].setAgent(temp);
 	}
 
@@ -262,50 +272,6 @@ public class Room
 				
 	}
 
-	// private void setValuesAdjecent(Space[][] input, int previous,Location location, int index)
-	// {
-	// 	System.out.println(location);
-	// 	if(!validLocation(location.getX(),location.getY()) || input[location.getX()][location.getY()].getType() == wall)
-	// 	{
-	// 		// System.out.println("ASDSAd");
-	// 		return;
-	// 	}
-	// 	input[location.getX()][location.getY()].setValueAt(value,index);
-
-	// 	int x = location.getX();
-	// 	int y = location.getY();
-
-	// 	for(int i = -1; i < 2; i++)
-	// 	{
-	// 		for(int j = -1; j < 2; j++)
-	// 		{
-	// 			if(i == 0 && j == 0)
-	// 			{
-	// 				continue;
-	// 			}
-	// 			setValue(input,new Location(x+i,y+j),previous,index);
-	// 		}
-	// 	}
-	// 	printValues();
-	// 	for(int i = -1; i < 2; i++)
-	// 	{
-	// 		for(int j = -1; j < 2; j++)
-	// 		{
-	// 			if(i == 0 && j == 0)
-	// 			{
-	// 				continue;
-	// 			}
-	// 			// System.out.println("in");
-	// 			// setValue(Space[][] input, Location location, int value, int index)
-	// 			if(validLocation(x+i,y+j))
-	// 			{
-	// 				setValuesAdjecent(input,input[x+i][y+j].getValueAt(index),new Location(x+i,y+j),index);
-	// 			}
-	// 		}
-	// 	}
-				
-	// }
-
 	private boolean validLocation(int x, int y)
 	{
 		return ((x >= 0 && x < space.length) && (y >= 0 && y < space[x].length));
@@ -329,29 +295,6 @@ public class Room
 		}
 		// return false;
 	}
-
-	// private void setValue(Space[][] input, Location location, int value, int index)
-	// {
-	// 	if(!validLocation(location.getX(),location.getY()) || input[location.getX()][location.getY()].getType() == wall)
-	// 	{
-	// 		return;
-	// 	}
-	// 	else if(input[location.getX()][location.getY()].getType() == obstacle)
-	// 	{
-	// 		if(input[location.getX()][location.getY()].isValueSet(index) || (value+2) <= input[location.getX()][location.getY()].getValueAt(index))
-	// 		{
-	// 			input[location.getX()][location.getY()].setValueAt(value+2,index);		
-	// 		}
-	// 	}
-	// 	else
-	// 	{
-	// 		if(input[location.getX()][location.getY()].isValueSet(index) || (value+1) <= input[location.getX()][location.getY()].getValueAt(index))
-	// 		{
-	// 			input[location.getX()][location.getY()].setValueAt(value+2,index);		
-	// 		}
-	// 	}
-	// }
-
 	public void printValues()
 	{	
 		// System.out.println(doorLocation.get(0));

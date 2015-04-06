@@ -28,7 +28,7 @@ public class Agent
 		priority = i;
 	}
 	// this is not final
-	public Location getNextMove()
+	public Location getNextMove(int doors,Space[][] room)
 	{
 		return null;
 	}
@@ -53,5 +53,10 @@ public class Agent
 	public int getPriority()
 	{
 		return priority;
+	}
+
+	public Location getPosition()
+	{
+		return position;
 	}
 }

@@ -45,9 +45,9 @@ public class Building
 		String out = "";
 		for (int i = 0; i < rooms.size(); ++i)
 		{
-			// out += rooms.get(i) + "\n";
-			System.out.println("------------------------------------------------------------------");
-			rooms.get(i).printValues();
+			out += rooms.get(i) + "\n";
+			// System.out.println("------------------------------------------------------------------");
+			// rooms.get(i).printValues();
 		}
 		return out;
 	}
