@@ -5,12 +5,22 @@ public class Agent
 	private Location position = null;
 	private String type = "C";
 	private int priority = 1;
-
+	private boolean allowed = true;
 
 	public Agent()
 	{
 
 	}
+
+	// public Agent(Agent in)
+	// {
+	// 	target = null;
+	// 	position = null;
+	// 	type = "C";
+	// 	priority = 1;
+	// 	allowed = true;
+	// }
+
 	public void update()
 	{
 
@@ -60,5 +70,23 @@ public class Agent
 	public Location getPosition()
 	{
 		return position;
+	}
+
+	public void stop()
+	{
+		// System.out.println("Asda");
+		// System.out.println(allowed);
+		allowed = false;
+		// System.out.println(allowed);
+	}
+
+	public void move()
+	{
+		allowed = true;
+	}
+
+	public boolean ableToMove()
+	{
+		return allowed;
 	}
 }

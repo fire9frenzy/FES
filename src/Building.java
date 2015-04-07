@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 public class Building
 {
 	public ArrayList<Room> rooms = new ArrayList<Room>();
@@ -50,5 +50,20 @@ public class Building
 			// rooms.get(i).printValues();
 		}
 		return out;
+	}
+
+	public boolean isEmpty()
+	{
+		Iterator<Room> iterator = rooms.iterator();
+		// System.out.println(rooms.size());
+		boolean empty = true;
+		while(iterator.hasNext())
+		{
+			Room temp = iterator.next();
+			empty = (empty && temp.isEmpty());
+			// System.out.println(iterator.hasNext());
+		}
+		// System.out.println(empty);
+		return empty;
 	}
 }

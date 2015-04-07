@@ -29,8 +29,17 @@ public class CalmAgent extends Agent
 		int y = position.getY();
 
 		ArrayList<Location> possible = getPossibles(x,y,room);
-		int min = room[possible.get(0).getX()][possible.get(0).getY()].getValueAt(doorToGo);
-		Location best = possible.get(0);
+		int min = room[x][y].getValueAt(doorToGo);
+		Location best = position;
+
+		// System.out.println(super.ableToMove());
+		if(!super.ableToMove())
+		{
+			System.out.println("C Agent could not Move");
+			super.move();
+			return best;
+		}
+		System.out.println("C Agent could Move");
 
 		Iterator<Location> iterator = possible.iterator();
 
@@ -39,9 +48,13 @@ public class CalmAgent extends Agent
 			Location temp = iterator.next();
 			if(room[temp.getX()][temp.getY()].getValueAt(doorToGo) <= min)
 			{
-				min = room[temp.getX()][temp.getY()].getValueAt(doorToGo);
-				best = temp;	
+				if(!room[temp.getX()][temp.getY()].hasAgent())
+				{
+					min = room[temp.getX()][temp.getY()].getValueAt(doorToGo);
+					best = temp;	
+				}
 			}
+			// System.out.println("check");
 		}
 
 		return best;

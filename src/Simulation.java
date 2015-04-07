@@ -5,21 +5,19 @@ public class Simulation
 	{
 		Building lab = new Building();
 		lab.addRoom(new Room());
-		lab.addRoom(new Room());
-		lab.placeAgents(5);
+		// lab.addRoom(new Room());
+		lab.placeAgents(2);
 		lab.initiate();
+
+		do
+		{
+			System.out.println("-------------------------------------------------------");
+			System.out.println(lab);
+			lab.update();
+			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		}
+		while(!lab.isEmpty());
 		System.out.println(lab);
-		lab.update();
-		// Room testRoom = new Room();
-		System.out.println("-------------------------------------------------------");
-		System.out.println(lab);
-		lab.update();
-		// Room testRoom = new Room();
-		System.out.println("-------------------------------------------------------");
-		System.out.println(lab);
-		lab.update();
-		// Room testRoom = new Room();
-		System.out.println("-------------------------------------------------------");
-		System.out.println(lab);
+
 	}
 }

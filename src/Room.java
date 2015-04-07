@@ -24,6 +24,13 @@ public class Room
 
 	public void initiateRoom()
 	{
+		setAgentQueue();
+		setValues();
+
+	}
+
+	private void setAgentQueue()
+	{
 		ArrayList<Integer> priorities = new ArrayList<Integer>();
 
 		for(int i = 0; i < space.length; i++)
@@ -41,6 +48,7 @@ public class Room
 			}
 		}
 
+		queue = new ArrayList<Agent>();
 		while(!priorities.isEmpty())
 		{
 			int highest = getHighest(priorities);
@@ -58,9 +66,12 @@ public class Room
 				}
 			}	
 		}
+		// System.out.println("qweqwe");
+	}
 
-		setValues();
-
+	public boolean isEmpty()
+	{
+		return (queue.size() == 0);
 	}
 
 	private int getHighest(ArrayList<Integer> in)
@@ -83,6 +94,7 @@ public class Room
 	public void updateRoom()
 	{
 		Iterator<Agent> iterator = queue.iterator();
+		// System.out.println("queue size" +queue.size());
 		while(iterator.hasNext())
 		{
 			
@@ -93,9 +105,54 @@ public class Room
 			change.updatePosition(newPosition);
 			space[currentPosition.getX()][currentPosition.getY()].setAgent(null);
 			space[newPosition.getX()][newPosition.getY()].setAgent(change);
+			if(change.getType() == (new PanickedAgent()).getType())
+			{
+				// System.out.println("true");
+				if(distanceTravelled(currentPosition,newPosition) >= 2.0)
+				{
+					if((currentPosition.getX()-newPosition.getX()) != 0)
+					{
+						// System.out.println("X");
+						// System.out.println(currentPosition.getX() +((newPosition.getX()-currentPosition.getX())/2));
+						if(space[(currentPosition.getX())+((newPosition.getX()-currentPosition.getX())/2)][currentPosition.getY()].hasAgent())	
+						{
+							// System.out.println(space[(currentPosition.getX())+((newPosition.getX()-currentPosition.getX())/2)][currentPosition.getY()]);
+							space[(currentPosition.getX())+((newPosition.getX()-currentPosition.getX())/2)][currentPosition.getY()].getAgent().stop();
+							// System.out.println("@@@@@@@@@@@@@@@@@@@@@@");	
+							// System.out.println(space[(currentPosition.getX())+((newPosition.getX()-currentPosition.getX())/2)][currentPosition.getY()].getAgent().ableToMove());
+						}
+					}
+					else
+					{
+						// System.out.println("Y");
+						if(space[currentPosition.getX()][(currentPosition.getY())+((newPosition.getY()-currentPosition.getY())/2)].hasAgent())	
+						{
+							space[currentPosition.getX()][(currentPosition.getY())+((newPosition.getY()-currentPosition.getY())/2)].getAgent().stop();	
+						}
+					}
+				}
+			}
+			// System.out.println("check1");
 
 		}
-		
+		checkDoors();
+		setAgentQueue();
+	}
+
+	private void checkDoors()
+	{
+		Iterator<Location> iterator = doorLocation.iterator();
+		while(iterator.hasNext())
+		{
+			Location door = iterator.next();
+			if(space[door.getX()][door.getY()].hasAgent())
+			{
+				//This is where the Agent is move to the next room
+				//since no room connect has been done the agent will simply disapear
+				space[door.getX()][door.getY()].setAgent(null);	
+			}
+		}
+		// System.out.println("asdasd");
 	}
 
 	private void test()
@@ -104,29 +161,29 @@ public class Room
 
 		for(int i = 0; i < space.length; i++)
 		{
-			space[0][i] = new Space(wall);
-			space[space.length - 1][i] = new Space(wall);
+			space[i][0] = new Space(wall);
+			space[i][space.length - 1] = new Space(wall);
 		}
 		for(int i = 0; i < space.length; i++)
 		{
-			space[i][space.length - 1] = new Space(wall);
+			space[space.length - 1][i] = new Space(wall);
 		}
 
 		for(int i = 0; i < space.length; i++)
 		{
-			if(i == 5)
+			if(i == 0)
 			{
-				space[i][0] = new Space(door);
-				doorLocation.add(new Location(i,0));
+				space[9][i] = new Space(door);
+				doorLocation.add(new Location(9,i));
 			}
-			if(i == 5)
-			{
-				space[i][19] = new Space(door);
-				doorLocation.add(new Location(i,19));
-			}
+			// if(i == 5)
+			// {
+			// 	space[i][19] = new Space(door);
+			// 	doorLocation.add(new Location(i,19));
+			// }
 			else
 			{
-				space[i][0] = new Space(wall);
+				space[0][i] = new Space(wall);
 			}
 		}
 
@@ -138,6 +195,13 @@ public class Room
 				space[i][j] = new Space(floor);
 			}
 		}
+
+		Agent temp = createAgent("P");
+		temp.updatePosition(new Location(9,15));
+		space[9][15].setAgent(temp);
+		temp = createAgent("C");
+		temp.updatePosition(new Location(9,14));
+		space[9][14].setAgent(temp);
 	}
 
 	public void setAgent(String agentType)
@@ -321,6 +385,11 @@ public class Room
 				System.out.println("\n");
 			}
 		}
+	}
+
+	private double distanceTravelled(Location from, Location to)
+	{
+		return Math.sqrt(Math.pow((from.getX() - to.getX()),2) + Math.pow((from.getY() - to.getY()),2));
 	}
 
 }
