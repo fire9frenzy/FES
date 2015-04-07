@@ -5,6 +5,8 @@ public class Agent
 	private Location position = null;
 	private String type = "C";
 	private int priority = 1;
+
+
 	public Agent()
 	{
 
@@ -30,7 +32,7 @@ public class Agent
 	// this is not final
 	public Location getNextMove(int doors,Space[][] room)
 	{
-		return null;
+		return position;
 	}
 	// if the room moves the agent update its Position
 	public void updatePosition(Location p)
@@ -44,7 +46,7 @@ public class Agent
 	}
 	public String toString()
 	{
-		return "Agent: \n target: " + target + "\n position: " + position;
+		return "Agent " + type + ": \n target: " + target + "\n position: " + position;
 	}
 	public String getType()
 	{

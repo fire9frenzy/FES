@@ -8,8 +8,18 @@ public class Simulation
 		lab.addRoom(new Room());
 		lab.placeAgents(5);
 		lab.initiate();
+		System.out.println(lab);
 		lab.update();
 		// Room testRoom = new Room();
+		System.out.println("-------------------------------------------------------");
+		System.out.println(lab);
+		lab.update();
+		// Room testRoom = new Room();
+		System.out.println("-------------------------------------------------------");
+		System.out.println(lab);
+		lab.update();
+		// Room testRoom = new Room();
+		System.out.println("-------------------------------------------------------");
 		System.out.println(lab);
 	}
 }

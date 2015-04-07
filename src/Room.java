@@ -82,16 +82,20 @@ public class Room
 
 	public void updateRoom()
 	{
-		for(int i = 0; i < space.length; i++)
+		Iterator<Agent> iterator = queue.iterator();
+		while(iterator.hasNext())
 		{
-			for(int j = 0; j < space[i].length; j++)
-			{
-				if(space[i][j].hasAgent())
-				{
-					space[i][j].getAgent().getNextMove(doorLocation.size(),space);
-				}
-			}
+			
+			Agent change = iterator.next();
+			System.out.println(change);
+			Location currentPosition = change.getPosition();
+			Location newPosition = change.getNextMove(doorLocation.size(),space);
+			change.updatePosition(newPosition);
+			space[currentPosition.getX()][currentPosition.getY()].setAgent(null);
+			space[newPosition.getX()][newPosition.getY()].setAgent(change);
+
 		}
+		
 	}
 
 	private void test()

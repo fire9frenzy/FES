@@ -92,4 +92,24 @@ public class Space
  	{
  		return !(values[index]==-1);
  	}
+
+ 	public int getWall()
+ 	{
+ 		return 0;
+ 	}
+
+ 	public int getObstacle()
+ 	{
+ 		return 1;
+ 	}
+
+	public int getFloor()
+ 	{
+ 		return 2;
+ 	}
+
+	public int getDoor()
+ 	{
+ 		return 3;
+ 	}
 }
