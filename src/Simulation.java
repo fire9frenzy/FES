@@ -1,12 +1,14 @@
 import java.util.*;
 public class Simulation
 {
+	int doorCount = 0;
 	public static void main(String[] args)
 	{
 		Building lab = new Building();
-		lab.addRoom(new Room());
 		// lab.addRoom(new Room());
-		lab.placeAgents(2);
+		// lab.addRoom(new Room());
+		// lab.addRoom(new Room());
+		lab.placeAgents(1);
 		lab.initiate();
 
 		do

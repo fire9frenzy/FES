@@ -7,8 +7,9 @@ public class Room
 	private int floor = 2;
 	private int door = 3;
 	private int agentsPlaced = 0;
-	ArrayList<Agent> queue = new ArrayList<Agent>();
+	private ArrayList<Agent> queue = new ArrayList<Agent>();
 	private ArrayList<Location> doorLocation = new ArrayList<Location>();
+	private ArrayList<Door> doors = new ArrayList<Door>();
 	private int totalFloors = 0;
 	//    0 1 2 3
 	//    _ _ _ _
@@ -18,17 +19,19 @@ public class Room
 	// 3 | | | | |
 	private Space[][] space;
 	public Room()
-	{	
-		test();
+	{
+		// test();
 	}
-
+	public Space[][] getSpace()
+	{
+		return space;
+	}
 	public void initiateRoom()
 	{
 		setAgentQueue();
 		setValues();
 
 	}
-
 	private void setAgentQueue()
 	{
 		ArrayList<Integer> priorities = new ArrayList<Integer>();
@@ -142,14 +145,21 @@ public class Room
 	private void checkDoors()
 	{
 		Iterator<Location> iterator = doorLocation.iterator();
+		Iterator<Door> doorIt = doors.iterator();
 		while(iterator.hasNext())
 		{
-			Location door = iterator.next();
-			if(space[door.getX()][door.getY()].hasAgent())
+			Location doorPos = iterator.next();
+			Door currentDoor = doorIt.next();
+			if(space[doorPos.getX()][doorPos.getY()].hasAgent())
 			{
 				//This is where the Agent is move to the next room
 				//since no room connect has been done the agent will simply disapear
-				space[door.getX()][door.getY()].setAgent(null);	
+
+				if (currentDoor.leave(space[doorPos.getX()][doorPos.getY()].getAgent()))
+				{
+					space[doorPos.getX()][doorPos.getY()].setAgent(null);	
+				}
+				// else do nothing
 			}
 		}
 		// System.out.println("asdasd");
@@ -175,6 +185,7 @@ public class Room
 			{
 				space[9][i] = new Space(door);
 				doorLocation.add(new Location(9,i));
+				// addDoor(9, i);
 			}
 			// if(i == 5)
 			// {
@@ -209,7 +220,7 @@ public class Room
 		agentsPlaced++;
 		Random random = new Random();
 		ArrayList<Location> available = new ArrayList<Location>();
-
+		// System.out.println("The room looks like this\n" + this);
 		for(int i = 0; i < space.length; i++)
 		{
 			for(int j = 0; j < space[i].length; j++)
@@ -391,5 +402,67 @@ public class Room
 	{
 		return Math.sqrt(Math.pow((from.getX() - to.getX()),2) + Math.pow((from.getY() - to.getY()),2));
 	}
+	public boolean hasDoor(int doorID)
+	{
+		for (int i = 0; i < doors.size(); ++i)
+		{
+			if (doors.get(i).getID() == doorID)
+			{
+				return true;	
+			}
+		}
+		return false;
+	}
+	// need an add door method
+	public void addDoor(int x, int y, Door d)
+	{
+		space[x][y] = new Space(door);
+		doorLocation.add(new Location(x,y));
+		doors.add(d);
+		// System.out.println("The room looks like this\n" + this);
+	}
+	public boolean placeByDoor(Agent a, int doorID)
+	{
+		System.out.println("HELLO");
+		for (int i = 0; i < doors.size(); ++i)
+		{
+			if (doors.get(i).getID() == doorID)
+			{
+				// check if there is an agent there
+				Location local = doorLocation.get(i);
+				if(space[local.getX()][local.getY()].hasAgent())
+				{
+					return false;
+				}
+				else
+				{
+					space[local.getX()][local.getY()].setAgent(a);
+					return true;
+				}
 
+			}
+		}
+		// find the doors location
+		return false;
+	}
+	public void setSize(int w, int h)
+	{
+		space = new Space[w][h];
+		for (int i = 0; i < space.length; ++i)
+		{
+			for (int j = 0; j < space[i].length; ++j)
+			{
+				if (j == 0 || j == h - 1 || i == 0 || i == w - 1)
+				{
+					space[i][j] = new Space(wall);
+				}
+				else
+				{
+					space[i][j] = new Space(floor);
+					++totalFloors;
+				}
+			}
+		}
+		// System.out.println("The room looks like this\n" + this);
+	}
 }
