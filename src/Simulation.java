@@ -11,14 +11,14 @@ public class Simulation
 		lab.placeAgents(1);
 		lab.initiate();
 
-		do
-		{
-			System.out.println("-------------------------------------------------------");
-			System.out.println(lab);
-			lab.update();
-			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		}
-		while(!lab.isEmpty());
+		// do
+		// {
+		// 	System.out.println("-------------------------------------------------------");
+		// 	System.out.println(lab);
+		// 	lab.update();
+		// 	// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		// }
+		// while(!lab.isEmpty());
 		System.out.println(lab);
 
 	}

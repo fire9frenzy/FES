@@ -11,6 +11,7 @@ public class Room
 	private ArrayList<Location> doorLocation = new ArrayList<Location>();
 	private ArrayList<Door> doors = new ArrayList<Door>();
 	private int totalFloors = 0;
+	private boolean leadOutside = false;
 	//    0 1 2 3
 	//    _ _ _ _
 	// 0 | | | | |  x = (1,2)
@@ -26,11 +27,21 @@ public class Room
 	{
 		return space;
 	}
-	public void initiateRoom()
+	public void initiateRoom(int[] doorPair, int index)
 	{
+		// System.out.println("asdasda");
+		setValues(doorPair, index);
 		setAgentQueue();
-		setValues();
+	}
 
+	public boolean leadsOutside()
+	{
+		return leadOutside;
+	}
+
+	public void setDoorOutside()
+	{
+		leadOutside = true;
 	}
 	private void setAgentQueue()
 	{
@@ -146,6 +157,7 @@ public class Room
 	{
 		Iterator<Location> iterator = doorLocation.iterator();
 		Iterator<Door> doorIt = doors.iterator();
+		int index = 0;
 		while(iterator.hasNext())
 		{
 			Location doorPos = iterator.next();
@@ -157,62 +169,14 @@ public class Room
 
 				if (currentDoor.leave(space[doorPos.getX()][doorPos.getY()].getAgent()))
 				{
+					// placeByDoor(space[doorPos.getX()][doorPos.getY()].getAgent(),index);
 					space[doorPos.getX()][doorPos.getY()].setAgent(null);	
 				}
 				// else do nothing
 			}
+			index++;
 		}
 		// System.out.println("asdasd");
-	}
-
-	private void test()
-	{
-		space = new Space[20][20];
-
-		for(int i = 0; i < space.length; i++)
-		{
-			space[i][0] = new Space(wall);
-			space[i][space.length - 1] = new Space(wall);
-		}
-		for(int i = 0; i < space.length; i++)
-		{
-			space[space.length - 1][i] = new Space(wall);
-		}
-
-		for(int i = 0; i < space.length; i++)
-		{
-			if(i == 0)
-			{
-				space[9][i] = new Space(door);
-				doorLocation.add(new Location(9,i));
-				// addDoor(9, i);
-			}
-			// if(i == 5)
-			// {
-			// 	space[i][19] = new Space(door);
-			// 	doorLocation.add(new Location(i,19));
-			// }
-			else
-			{
-				space[0][i] = new Space(wall);
-			}
-		}
-
-		for(int i = 1; i < space.length -1; i++)
-		{
-			for(int j = 1; j < space[i].length -1; j++)
-			{
-				totalFloors++;
-				space[i][j] = new Space(floor);
-			}
-		}
-
-		Agent temp = createAgent("P");
-		temp.updatePosition(new Location(9,15));
-		space[9][15].setAgent(temp);
-		temp = createAgent("C");
-		temp.updatePosition(new Location(9,14));
-		space[9][14].setAgent(temp);
 	}
 
 	public void setAgent(String agentType)
@@ -291,24 +255,51 @@ public class Room
 	//W|4|4|4|4|W
 	//WWWWWWWWWWW
 
-	private void setValues()
+	public void setTotalLayers(int outsideDoors)
 	{
-		for(int i = 0; i < space.length; i++)
+		for(int i = 0;  i < space.length; i++)
 		{
-			for(int j = 0; j < space[i].length; j++)
+			for(int j = 0;  j < space[i].length; j++)
 			{
-				space[i][j].setPossibleDoors(doorLocation.size());
+				space[i][j].setPossibleDoors(outsideDoors);
+			}
+		}
+	}
+
+	private void setValues(int[] doorPair, int index)
+	{
+		for(int i = 0;  i < doorLocation.size(); i++)
+		{
+			if(doors.get(i).getID() == doorPair[0] || doors.get(i).getID() == doorPair[1])
+			{
+				int starting = 0;
+				if(doorPair[0] == -1 || doorPair[1] == -1)
+				{
+					starting = 0;
+				}
+				else
+				{
+					starting = doors.get(i).getOtherValue(index);
+
+				}
+				// System.out.println(starting);
+				Location tempLoc = doorLocation.get(i);
+				space[tempLoc.getX()][tempLoc.getY()].setValueAt(starting,index);
+				ArrayList<Location> temp = new ArrayList<Location>();
+				temp.add(tempLoc);
+				setValuesAdjecent(space,temp,index);
+				i = doorLocation.size();
 			}
 		}
 
-		for(int i = 0; i < doorLocation.size(); i++)
-		{
-			Location tempLoc = doorLocation.get(i);
-			space[tempLoc.getX()][tempLoc.getY()].setValueAt(0,i);
-			ArrayList<Location> temp = new ArrayList<Location>();
-			temp.add(tempLoc);
-			setValuesAdjecent(space,temp,i);
-		}
+		// for(int i = 0; i < doorLocation.size(); i++)
+		// {
+		// 	Location tempLoc = doorLocation.get(i);
+		// 	space[tempLoc.getX()][tempLoc.getY()].setValueAt(0,i);
+		// 	ArrayList<Location> temp = new ArrayList<Location>();
+		// 	temp.add(tempLoc);
+		// 	setValuesAdjecent(space,temp,i);
+		// }
 	}
 
 	private void setValuesAdjecent(Space[][] input,ArrayList<Location> location, int index)
@@ -378,7 +369,7 @@ public class Room
 	{	
 		// System.out.println(doorLocation.get(0));
 		// System.out.println(doorLocation.get(1));
-		for(int k = 0; k < doorLocation.size(); k++)
+		for(int k = 0; k < space[0][0].getLayerAmount(); k++)
 		{
 			for(int i = 0; i < space.length; i++)
 			{
@@ -402,6 +393,7 @@ public class Room
 	{
 		return Math.sqrt(Math.pow((from.getX() - to.getX()),2) + Math.pow((from.getY() - to.getY()),2));
 	}
+
 	public boolean hasDoor(int doorID)
 	{
 		for (int i = 0; i < doors.size(); ++i)
@@ -413,6 +405,19 @@ public class Room
 		}
 		return false;
 	}
+
+	public int getDoorValueAt(int doorID, int index)
+	{
+		for(int i = 0; i < doors.size(); ++i)
+		{
+			if(doors.get(i).getID() == doorID)
+			{
+				return space[doorLocation.get(i).getX()][doorLocation.get(i).getY()].getValueAt(index);
+			}
+		}
+		return -1;
+	}
+
 	// need an add door method
 	public void addDoor(int x, int y, Door d)
 	{
@@ -439,7 +444,6 @@ public class Room
 					space[local.getX()][local.getY()].setAgent(a);
 					return true;
 				}
-
 			}
 		}
 		// find the doors location
@@ -464,5 +468,15 @@ public class Room
 			}
 		}
 		// System.out.println("The room looks like this\n" + this);
+	}
+
+	public int doorAmount()
+	{
+		return doorLocation.size();
+	}
+
+	public int getDoorID(int i)
+	{
+		return doors.get(i).getID();
 	}
 }

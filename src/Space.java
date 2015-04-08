@@ -93,6 +93,11 @@ public class Space
  		return !(values[index]==-1);
  	}
 
+ 	public int getLayerAmount()
+ 	{
+ 		return values.length;
+ 	}
+
  	public int getWall()
  	{
  		return 0;

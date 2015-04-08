@@ -4,6 +4,7 @@ public class Building
 	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private ArrayList<int[]> doorPairs = new ArrayList<int[]>();
 	private int doorCount = 0;
+	private int outsideDoors = 0;
 	public Building()
 	{
 		fakeParse();
@@ -11,10 +12,97 @@ public class Building
 
 	public void initiate()
 	{
+
 		for(int i = 0; i < rooms.size(); i++)
 		{
-			rooms.get(i).initiateRoom();
+			rooms.get(i).setTotalLayers(outsideDoors);
+		}	
+
+		int lastPair = 0;
+		for(int i = 0; i < outsideDoors; i++)
+		{
+			for(int j = lastPair; j < doorPairs.size(); j++)
+			{
+				// System.out.println(doorPairs.get(j)[0] == -1);
+				// System.out.println(doorPairs.get(j)[1] == -1);
+				if((doorPairs.get(j)[0] == -1) || (doorPairs.get(j)[1] == -1))
+				{
+					int pairIndex = 1;
+					if(doorPairs.get(j)[1] == -1)
+					{
+						pairIndex = 0;
+					}
+					for(int k = 0; k < rooms.size(); ++k)
+					{
+						// System.out.println(doorPairs.get(j)[pairIndex]);
+						if(rooms.get(k).hasDoor(doorPairs.get(j)[pairIndex]))
+						{
+							initiate(rooms.get(k),doorPairs.get(j), i);
+							k = rooms.size();
+						}
+					}
+
+					lastPair = j;
+					j = doorPairs.size();
+				}
+			}
 		}
+
+		// for(int i = 0; i < rooms.size(); i++)
+		// {
+		// 	rooms.get(i).initiateRoom();
+		// }
+	}
+
+	private void initiate(Room room, int[] doorPair ,int index)
+	{
+		room.initiateRoom(doorPair, index);
+		// System.out.println(doorPair[1]);
+		for(int i = 0; i < room.doorAmount(); i++)
+		{
+			int tempID = room.getDoorID(i);
+			if(tempID == doorPair[0] || tempID == doorPair[1])
+			{
+				// System.out.println(tempID);
+				continue;
+			}
+			int[] pair = getDoorPair(tempID);
+			int other = pair[0];
+			if(pair[0] ==  tempID)
+			{
+				other = pair[1];
+			}
+
+			Room next = findRoomWithID(other);
+			initiate(next,pair,index);
+		}
+	}
+
+	private Room findRoomWithID(int id)
+	{
+		int temp = 0;
+		for(int i = 0; i < rooms.size(); ++i)
+		{
+			if(rooms.get(i).hasDoor(id))
+			{
+				temp = i;
+				i = rooms.size();
+			}
+		}
+		return rooms.get(temp);
+	}
+
+	private int[] getDoorPair(int id)
+	{
+		for(int i = 0; i < doorPairs.size(); ++i)
+		{
+			if(doorPairs.get(i)[0] == id || doorPairs.get(i)[1] == id)
+			{
+				return doorPairs.get(i);
+			}
+		}
+		int[] temp = {-1,-1};
+		return temp;
 	}
 
 	public void update()
@@ -51,11 +139,11 @@ public class Building
 		// find the matching door
 		for (int i = 0; i < doorPairs.size(); ++i)
 		{
-			if (doorPairs.get(i)[0] == doorID)
+			if(doorPairs.get(i)[0] == doorID)
 			{
 				System.out.println("0 to 1");
 				// check for open space
-				for (int j = 0; j < rooms.size(); ++j)
+				for(int j = 0; j < rooms.size(); ++j)
 				{
 					// check for outside
 					if (doorPairs.get(i)[1] == -1)
@@ -101,9 +189,9 @@ public class Building
 		String out = "";
 		for (int i = 0; i < rooms.size(); ++i)
 		{
-			out += rooms.get(i) + "\n";
+			// out += rooms.get(i) + "\n";
 			// System.out.println("------------------------------------------------------------------");
-			// rooms.get(i).printValues();
+			rooms.get(i).printValues();
 		}
 		return out;
 	}
@@ -122,6 +210,38 @@ public class Building
 		// System.out.println(empty);
 		return empty;
 	}
+	// build.getDoorValue(id, layerIndex);
+	public int getDoorValue(int doorID, int layerIndex)
+	{
+		// find door pair
+		for (int i = 0; i < doorPairs.size(); ++i)
+		{
+			if (doorPairs.get(i)[0] == doorID)
+			{
+				for (int j = 0; j < rooms.size(); ++j)
+				{
+					if (rooms.get(j).hasDoor(doorPairs.get(i)[1]))
+					{
+						return rooms.get(j).getDoorValueAt(doorPairs.get(i)[1], layerIndex);
+					}
+				}
+			}
+			else if (doorPairs.get(i)[1] == doorID)
+			{
+				for (int j = 0; j < rooms.size(); ++j)
+				{
+					if (rooms.get(j).hasDoor(doorPairs.get(i)[0]))
+					{
+						return rooms.get(j).getDoorValueAt(doorPairs.get(i)[0], layerIndex);
+					}
+				}
+			}
+		}
+		return -1;
+		// find other door
+		// find room
+		// get value
+	}
 	public void fakeParse()
 	{
 		Room r = new Room();
@@ -136,6 +256,14 @@ public class Building
 
 		s.addDoor(2,0, new Door(++doorCount, this));
 		pairDoors(doorCount, -1);
+		outsideDoors++;
 		rooms.add(s);
+
+		// for(int i = 0; i < doorPairs.size(); ++i)
+		// {
+		// 	System.out.println("Pair");
+		// 	System.out.println(doorPairs.get(i)[0]);
+		// 	System.out.println(doorPairs.get(i)[1]);
+		// }
 	}
 }
