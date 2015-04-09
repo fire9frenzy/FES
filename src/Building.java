@@ -10,6 +10,7 @@ public class Building
 	public Building()
 	{
 		// fakeParse();
+		// fileParse("../buildings/BryanBuilding.building");
 		fileParse("../buildings/test.building");
 	}
 
@@ -381,6 +382,7 @@ public class Building
 		while(sc.hasNext())
 		{
 			String line = sc.nextLine();
+			line = line.trim();
 			if (line.equals("</room>"))
 			{
 				foundEnd = true;
@@ -455,6 +457,7 @@ public class Building
 				else
 				{
 					System.out.println("Unknown peice killing all the program");
+					System.out.println(parts[i]);
 				}
 			}
 		}
