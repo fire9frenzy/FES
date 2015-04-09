@@ -118,7 +118,7 @@ public class Room
 			Agent change = iterator.next();
 			System.out.println(change);
 			Location currentPosition = change.getPosition();
-			Location newPosition = change.getNextMove(doorLocation.size(),space);
+			Location newPosition = change.getNextMove(space[0][0].getLayerAmount(),space);
 			change.updatePosition(newPosition);
 			space[currentPosition.getX()][currentPosition.getY()].setAgent(null);
 			space[newPosition.getX()][newPosition.getY()].setAgent(change);
