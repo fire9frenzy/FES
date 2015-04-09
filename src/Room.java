@@ -2,6 +2,7 @@ import java.util.*;
 
 public class Room
 {
+	public String name = "Room";
 	private int wall = 0;
 	private int obstacle = 1;
 	private int floor = 2;
@@ -151,35 +152,13 @@ public class Room
 			// System.out.println("check1");
 
 		}
-		checkDoors();
 		setAgentQueue();
 	}
-
-	private void checkDoors()
+	public void checkAllDoors()
 	{
-		Iterator<Location> iterator = doorLocation.iterator();
-		Iterator<Door> doorIt = doors.iterator();
-		int index = 0;
-		while(iterator.hasNext())
-		{
-			Location doorPos = iterator.next();
-			Door currentDoor = doorIt.next();
-			if(space[doorPos.getX()][doorPos.getY()].hasAgent())
-			{
-				//This is where the Agent is move to the next room
-				//since no room connect has been done the agent will simply disapear
-
-				if (currentDoor.leave(space[doorPos.getX()][doorPos.getY()].getAgent()))
-				{
-					// placeByDoor(space[doorPos.getX()][doorPos.getY()].getAgent(),index);
-					space[doorPos.getX()][doorPos.getY()].setAgent(null);	
-				}
-				// else do nothing
-			}
-			index++;
-		}
-		// System.out.println("asdasd");
+		checkDoors();
 	}
+
 
 	public void setAgent(String agentType)
 	{
@@ -429,9 +408,54 @@ public class Room
 		doors.add(d);
 		// System.out.println("The room looks like this\n" + this);
 	}
+	private int getQueueIndexFromLocation(Location l)
+	{
+		for (int i = 0; i < queue.size(); ++i)
+		{
+			if (queue.get(i).getPosition().equals(l))
+			{
+				return i;
+			}
+		}
+		return -1;
+	}
+	private void checkDoors()
+	{
+		Iterator<Location> iterator = doorLocation.iterator();
+		Iterator<Door> doorIt = doors.iterator();
+		int index = 0;
+		while(iterator.hasNext())
+		{
+			Location doorPos = iterator.next();
+			Door currentDoor = doorIt.next();
+			if(space[doorPos.getX()][doorPos.getY()].hasAgent() 
+				&& !space[doorPos.getX()][doorPos.getY()].getAgent().hasUsedDoor())
+			{
+				if (!space[doorPos.getX()][doorPos.getY()].getAgent().hasUsedDoor())
+				{
+					if (currentDoor.leave(space[doorPos.getX()][doorPos.getY()].getAgent()))
+					{
+						// System.out.println("The queue \n" + queue);
+						int rIndex = getQueueIndexFromLocation(doorPos);
+						// System.out.println(rIndex);
+						queue.remove(rIndex);
+						// System.out.println(getQueueIndexFromLocation(door));
+						space[doorPos.getX()][doorPos.getY()].setAgent(null);
+						// System.out.println("The queue after\n" + queue);
+						// need to remove you from the queue
+						// System.out.println(queue);
+					}
+					// else do nothing
+				}
+				else
+					space[doorPos.getX()][doorPos.getY()].getAgent().resetUsedDoor();
+			}
+			index++;
+		}
+		// System.out.println("asdasd");
+	}
 	public boolean placeByDoor(Agent a, int doorID)
 	{
-		System.out.println("HELLO");
 		for (int i = 0; i < doors.size(); ++i)
 		{
 			if (doors.get(i).getID() == doorID)
@@ -444,7 +468,15 @@ public class Room
 				}
 				else
 				{
-					space[local.getX()][local.getY()].setAgent(a);
+					System.out.println("Move that agent!! into room " + name);
+					addAgent(local, a.getType());
+					space[local.getX()][local.getY()].getAgent().setUsedDoor();
+					// System.out.println(local);
+					// a.updatePosition(local);
+					// space[local.getX()][local.getY()].setAgent(a);
+					// queue.add(a);
+					// setAgentQueue();
+					// System.out.println(this);
 					return true;
 				}
 			}
@@ -481,5 +513,15 @@ public class Room
 	public int getDoorID(int i)
 	{
 		return doors.get(i).getID();
+	}
+	public void addAgent(Location l, String type)
+	{
+		if (type.equals(new CalmAgent().getType()))
+			space[l.getX()][l.getY()].setAgent(new CalmAgent());
+		else
+			space[l.getX()][l.getY()].setAgent(new PanickedAgent());
+
+		space[l.getX()][l.getY()].getAgent().updatePosition(l);
+		setAgentQueue();
 	}
 }

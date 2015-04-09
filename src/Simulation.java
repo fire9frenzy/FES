@@ -8,18 +8,17 @@ public class Simulation
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
-		lab.placeAgents(1);
+		// lab.placeAgents(1);
 		lab.initiate();
-
-		// do
-		// {
-		// 	System.out.println("-------------------------------------------------------");
-		// 	System.out.println(lab);
-		// 	lab.update();
-		// 	// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		// }
-		// while(!lab.isEmpty());
-		System.out.println(lab);
-
+		
+		// System.out.println(lab);
+		do
+		{
+			lab.update();
+			// System.out.println(lab);
+			// System.out.println("-------------------------------------------------------");
+			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		}
+		while(!lab.isEmpty());
 	}
 }

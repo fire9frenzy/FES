@@ -20,4 +20,13 @@ public class Location
 	{
 		return "("+x+","+y+")";
 	}
+	public boolean equals(Location other)
+	{
+		if (x == other.getX() && y == other.getY())
+		{
+			System.out.println(this + ": " + other);
+			return true;
+		}
+		return false;
+	}
 }

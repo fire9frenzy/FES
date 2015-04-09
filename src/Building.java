@@ -124,10 +124,17 @@ public class Building
 
 	public void update()
 	{
+		System.out.println(this);
 		for(int i = 0; i < rooms.size(); i++)
 		{
+			System.out.println("updating agents in " + rooms.get(i).name);
 			rooms.get(i).updateRoom();
-		}		
+			System.out.println("Checking doors in" + rooms.get(i).name);
+			rooms.get(i).checkAllDoors();
+		}
+		// for (int i = 0; i < rooms.size(); i++)
+		// {
+		// }
 	}
 
 	public void addRoom(Room r)
@@ -206,9 +213,9 @@ public class Building
 		String out = "";
 		for (int i = 0; i < rooms.size(); ++i)
 		{
-			// out += rooms.get(i) + "\n";
+			out += rooms.get(i) + "\n";
 			// System.out.println("------------------------------------------------------------------");
-			rooms.get(i).printValues();
+			// rooms.get(i).printValues();
 		}
 		return out;
 	}
@@ -263,9 +270,12 @@ public class Building
 	{
 		Room r = new Room();
 		r.setSize(20,20);
-		r.addDoor(9,19, new Door(++doorCount,this));
-		pairDoors(doorCount,-1);
-		outsideDoors++;
+		r.name = "big room";
+		// r.addDoor(9,19, new Door(++doorCount,this));
+		// pairDoors(doorCount,-1);
+		// outsideDoors++;
+		r.addAgent(new Location(5,5), "C");
+
 		r.addDoor(9, 0, new Door(++doorCount, this));
 		rooms.add(r);
 		Room s = new Room();
@@ -278,6 +288,7 @@ public class Building
 		pairDoors(doorCount, -1);
 		outsideDoors++;
 		rooms.add(s);
+		s.name = "small Room";
 
 		// for(int i = 0; i < doorPairs.size(); ++i)
 		// {

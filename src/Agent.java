@@ -6,6 +6,7 @@ public class Agent
 	private String type = "C";
 	private int priority = 1;
 	private boolean allowed = true;
+	private boolean usedDoor = false;
 
 	public Agent()
 	{
@@ -56,7 +57,7 @@ public class Agent
 	}
 	public String toString()
 	{
-		return "Agent " + type + ": \n target: " + target + "\n position: " + position;
+		return "Agent " + type + "\n position: " + position;
 	}
 	public String getType()
 	{
@@ -88,5 +89,17 @@ public class Agent
 	public boolean ableToMove()
 	{
 		return allowed;
+	}
+	public boolean hasUsedDoor()
+	{
+		return usedDoor;
+	}
+	public void setUsedDoor()
+	{
+		usedDoor = true;
+	}
+	public void resetUsedDoor()
+	{
+		usedDoor = false;
 	}
 }
