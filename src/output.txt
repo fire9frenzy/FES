@@ -1,203 +1,359 @@
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                 PW
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-DP PD
-WP PW
-FWWWW
 
 
-updating agents in big room
-Agent P
- position: (16,18)
-Agent could Move
-Checking doors in big room
-updating agents in small Room
-Agent P
- position: (2,1)
-Agent could Move
-Agent P
- position: (2,3)
-Agent could Move
-Agent P
- position: (3,1)
-Agent could Move
-Agent P
- position: (3,3)
-Agent could Move
-Checking doors in small Room
-(2,0): (2,0)
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                 PW
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
+WWWWWWWWWWWWWWW
+W             W
+W  C          W
+W     PP      W
+W             W
+W             W
+W    P        W
+W C           W
+WWWWWWWWWWWWWDW
 
-WWWWW
-WP  W
-DP  D
-WP  W
-FWWWW
+WFWWWDW
+W     W
+W   CPW
+W  P PW
+WWWWWDW
 
 
-updating agents in big room
-Agent P
- position: (14,18)
-Agent could Move
-Checking doors in big room
-updating agents in small Room
-Agent P
- position: (1,1)
-Agent could Move
-Agent P
- position: (2,1)
-Agent could not Move
-Agent P
- position: (3,1)
-Agent could Move
-Checking doors in small Room
-(2,0): (2,0)
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                 PW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
+WWWWWWWWWWWWWWW
+W             W
+W   C         W
+W      PP     W
+W             W
+W             W
+W      P      W
+W  C          W
+WWWWWWWWWWWWWDW
 
-WWWWW
-WP  W
-DP  D
-W   W
-FWWWW
+WFWWWDW
+W     W
+W    CW
+W   PPW
+WWWWWDW
 
 
-updating agents in big room
-Agent P
- position: (12,18)
-Agent could Move
-Checking doors in big room
-updating agents in small Room
-Agent P
- position: (1,1)
-Agent could Move
-Agent P
- position: (2,1)
-Agent could not Move
-Checking doors in small Room
-(2,0): (2,0)
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-D                  D
-W                 PW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
+WWWWWWWWWWWWWWW
+W             W
+W    C        W
+W       PP    W
+W             W
+W             W
+W        P    W
+W   C         W
+WWWWWWWWWWWWWDW
 
-WWWWW
-W   W
-DP  D
-W   W
-FWWWW
+WFWWWDW
+W     W
+W     W
+W   PCW
+WWWWWDW
 
 
-updating agents in big room
-Agent P
- position: (10,18)
-Agent could Move
-Checking doors in big room
-(9,19): (9,19)
-updating agents in small Room
-Agent P
- position: (2,1)
-Agent could Move
-Checking doors in small Room
-(2,0): (2,0)
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
+WWWWWWWWWWWWWWW
+W             W
+W     C       W
+W             W
+W        P    W
+W        P    W
+W          P  W
+W    C        W
+WWWWWWWWWWWWWDW
 
-WWWWW
-W   W
-D   D
-W   W
-FWWWW
+WFWWWDW
+W     W
+W     W
+W   C W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W      C      W
+W             W
+W        P    W
+W          P  W
+W             W
+W     C     P W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W    CW
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W       C     W
+W             W
+W             W
+W         P   W
+W             W
+W      C   P  W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W    PW
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W       C     W
+W             W
+W             W
+W          P  W
+W       C    PW
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W     W
+WWWWWPW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W        C    W
+W             W
+W             W
+W             W
+W        C  P W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W    PW
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W        C    W
+W             W
+W             W
+W         C   W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W    PW
+W     W
+W     W
+WWWWWPW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W         C   W
+W             W
+W             W
+W          C  W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W    PW
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W         C   W
+W             W
+W           C W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W     W
+WWWWWPW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W          C  W
+W             W
+W            CW
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W          C  W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W    CW
+W     W
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W           C W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W    CW
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W           C W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W    CW
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W            CW
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W     W
+WWWWWCW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W    CW
+W     W
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W    CW
+W     W
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W    CW
+WWWWWDW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W     W
+WWWWWCW
+
+
+WWWWWWWWWWWWWWW
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+W             W
+WWWWWWWWWWWWWDW
+
+WFWWWDW
+W     W
+W     W
+W     W
+WWWWWDW
 
 
