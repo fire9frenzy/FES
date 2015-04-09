@@ -524,4 +524,25 @@ public class Room
 		space[l.getX()][l.getY()].getAgent().updatePosition(l);
 		setAgentQueue();
 	}
+
+
+	public void produceFire()
+	{
+		ArrayList<Location> wallLocation = new ArrayList<Location>();
+		for(int i = 0; i < space.length; ++i)
+		{
+			for(int j = 0; j < space[i].length; ++j)
+			{
+				if(space[i][j].getType() == wall)
+				{
+					wallLocation.add(new Location(i,j));
+				}
+			}
+		}
+
+		Random random = new Random();
+		Location temp = wallLocation.get(random.nextInt(wallLocation.size()));
+		space[temp.getX()][temp.getY()].setOnFire();
+
+	}
 }
