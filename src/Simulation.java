@@ -8,7 +8,7 @@ public class Simulation
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
-		lab.placeAgents(5);
+		lab.placeAgents(1);
 		lab.initiate();
 		
 		// System.out.println(lab);
@@ -20,6 +20,6 @@ public class Simulation
 			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
 		while(!lab.isEmpty());
-		System.out.println(lab);
+		// System.out.println(lab);
 	}
 }

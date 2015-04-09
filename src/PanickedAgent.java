@@ -32,12 +32,12 @@ public class PanickedAgent extends Agent
 		Location best = position;
 		if(!super.ableToMove())
 		{
-			System.out.println("Agent could not Move");
+			// System.out.println("Agent could not Move");
 
 			super.move();
 			return best;
 		}
-		System.out.println("Agent could Move");
+		// System.out.println("Agent could Move");
 
 		Iterator<Location> iterator = possible.iterator();
 

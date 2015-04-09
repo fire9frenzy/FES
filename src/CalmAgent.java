@@ -35,11 +35,11 @@ public class CalmAgent extends Agent
 		// System.out.println(super.ableToMove());
 		if(!super.ableToMove())
 		{
-			System.out.println("C Agent could not Move");
+			// System.out.println("C Agent could not Move");
 			super.move();
 			return best;
 		}
-		System.out.println("C Agent could Move");
+		// System.out.println("C Agent could Move");
 
 		Iterator<Location> iterator = possible.iterator();
 

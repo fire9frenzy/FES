@@ -116,7 +116,7 @@ public class Room
 		{
 			
 			Agent change = iterator.next();
-			System.out.println(change);
+			// System.out.println(change);
 			Location currentPosition = change.getPosition();
 			Location newPosition = change.getNextMove(space[0][0].getLayerAmount(),space);
 			change.updatePosition(newPosition);
@@ -206,7 +206,7 @@ public class Room
 		String test = "";
 		for(int i = 0; i < space.length; i++)
 		{
-			for(int j = 0;  j < space.length; j++)
+			for(int j = 0;  j < space[i].length; j++)
 			{
 				test = test + space[i][j];
 			}
@@ -355,7 +355,7 @@ public class Room
 		{
 			for(int i = 0; i < space.length; i++)
 			{
-				for(int j = 0;  j < space.length; j++)
+				for(int j = 0;  j < space[i].length; j++)
 				{
 					if(space[i][j].getValueAt(k) == -1)
 					{
@@ -468,7 +468,7 @@ public class Room
 				}
 				else
 				{
-					System.out.println("Move that agent!! into room " + name);
+					// System.out.println("Move that agent!! into room " + name);
 					addAgent(local, a.getType());
 					space[local.getX()][local.getY()].getAgent().setUsedDoor();
 					// System.out.println(local);
@@ -544,5 +544,16 @@ public class Room
 		Location temp = wallLocation.get(random.nextInt(wallLocation.size()));
 		space[temp.getX()][temp.getY()].setOnFire();
 
+	}
+	public void setSpace(Space[][] newSpace)
+	{
+		space = newSpace;
+	}
+	public void printDoors()
+	{
+		for (int i = 0; i < doors.size(); ++i)
+		{
+			System.out.println(doors.get(i).getID());
+		}
 	}
 }

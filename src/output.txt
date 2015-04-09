@@ -2,10 +2,10 @@ WWWWWWWWWWWWWWWWWWWW
 W                  W
 W                  W
 W                  W
-W C                W
 W                  W
-W        P         F
-W             P    W
+W                  W
+W                  W
+W                  W
 W                  W
 D                  D
 W                  W
@@ -14,7 +14,7 @@ W                  W
 W                  W
 W                  W
 W                  W
-W                  W
+W                 PW
 W                  W
 W                  W
 WWWWWWWWWWWWWWWWWWWW
@@ -22,20 +22,14 @@ WWWWWWWWWWWWWWWWWWWW
 WWWWW
 W   W
 DP PD
-W   W
-WWWWW
+WP PW
+FWWWW
 
 
 updating agents in big room
 Agent P
- position: (6,9)
+ position: (16,18)
 Agent could Move
-Agent P
- position: (7,14)
-Agent could Move
-Agent C
- position: (4,2)
-C Agent could Move
 Checking doors in big room
 updating agents in small Room
 Agent P
@@ -44,22 +38,112 @@ Agent could Move
 Agent P
  position: (2,3)
 Agent could Move
+Agent P
+ position: (3,1)
+Agent could Move
+Agent P
+ position: (3,3)
+Agent could Move
 Checking doors in small Room
-Use a door
-0 to 1
-hello is it me your looking for
 (2,0): (2,0)
 WWWWWWWWWWWWWWWWWWWW
 W                  W
 W                  W
 W                  W
 W                  W
-W C                W
-W          P       F
-W               P  W
+W                  W
+W                  W
+W                  W
 W                  W
 D                  D
 W                  W
+W                  W
+W                  W
+W                  W
+W                 PW
+W                  W
+W                  W
+W                  W
+W                  W
+WWWWWWWWWWWWWWWWWWWW
+
+WWWWW
+WP  W
+DP  D
+WP  W
+FWWWW
+
+
+updating agents in big room
+Agent P
+ position: (14,18)
+Agent could Move
+Checking doors in big room
+updating agents in small Room
+Agent P
+ position: (1,1)
+Agent could Move
+Agent P
+ position: (2,1)
+Agent could not Move
+Agent P
+ position: (3,1)
+Agent could Move
+Checking doors in small Room
+(2,0): (2,0)
+WWWWWWWWWWWWWWWWWWWW
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+D                  D
+W                  W
+W                  W
+W                 PW
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+WWWWWWWWWWWWWWWWWWWW
+
+WWWWW
+WP  W
+DP  D
+W   W
+FWWWW
+
+
+updating agents in big room
+Agent P
+ position: (12,18)
+Agent could Move
+Checking doors in big room
+updating agents in small Room
+Agent P
+ position: (1,1)
+Agent could Move
+Agent P
+ position: (2,1)
+Agent could not Move
+Checking doors in small Room
+(2,0): (2,0)
+WWWWWWWWWWWWWWWWWWWW
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+W                  W
+D                  D
+W                 PW
 W                  W
 W                  W
 W                  W
@@ -74,28 +158,20 @@ WWWWW
 W   W
 DP  D
 W   W
-WWWWW
+FWWWW
 
 
 updating agents in big room
 Agent P
- position: (6,11)
+ position: (10,18)
 Agent could Move
-Agent P
- position: (7,16)
-Agent could Move
-Agent C
- position: (5,2)
-C Agent could Move
 Checking doors in big room
+(9,19): (9,19)
 updating agents in small Room
 Agent P
  position: (2,1)
 Agent could Move
 Checking doors in small Room
-Use a door
-0 to 1
-hello is it me your looking for
 (2,0): (2,0)
 WWWWWWWWWWWWWWWWWWWW
 W                  W
@@ -103,362 +179,7 @@ W                  W
 W                  W
 W                  W
 W                  W
-W C          P     F
-W                 PW
 W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D   D
-W   W
-WWWWW
-
-
-updating agents in big room
-Agent P
- position: (6,13)
-Agent could Move
-Agent P
- position: (7,18)
-Agent could Move
-Agent C
- position: (6,2)
-C Agent could Move
-Checking doors in big room
-updating agents in small Room
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W              P   F
-W C                W
-W                  W
-D                 PD
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D   D
-W   W
-WWWWW
-
-
-updating agents in big room
-Agent P
- position: (6,15)
-Agent could Move
-Agent P
- position: (9,18)
-Agent could Move
-Agent C
- position: (7,2)
-C Agent could Move
-Checking doors in big room
-Use a door
-0 to 1
-hello is it me your looking for
-(9,19): (9,19)
-updating agents in small Room
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                P F
-WC                 W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D   D
-W   W
-WWWWW
-
-
-updating agents in big room
-Agent P
- position: (6,17)
-Agent could Move
-Agent C
- position: (7,1)
-C Agent could Move
-Checking doors in big room
-updating agents in small Room
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
-W                  W
-WC               P W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D   D
-W   W
-WWWWW
-
-
-updating agents in big room
-Agent P
- position: (8,17)
-Agent could Move
-Agent C
- position: (8,1)
-C Agent could Move
-Checking doors in big room
-updating agents in small Room
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
-W                  W
-W                  W
-DC                PD
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D   D
-W   W
-WWWWW
-
-
-updating agents in big room
-Agent P
- position: (9,18)
-Agent could Move
-Agent C
- position: (9,1)
-C Agent could Move
-Checking doors in big room
-Use a door
-0 to 1
-hello is it me your looking for
-(9,19): (9,19)
-Use a door
-1 to 0
-Move that agent!! into room small Room
-(9,0): (9,0)
-updating agents in small Room
-Agent C
- position: (2,4)
-C Agent could Move
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D  CD
-W   W
-WWWWW
-
-
-updating agents in big room
-Checking doors in big room
-updating agents in small Room
-Agent C
- position: (2,3)
-C Agent could Move
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-D C D
-W   W
-WWWWW
-
-
-updating agents in big room
-Checking doors in big room
-updating agents in small Room
-Agent C
- position: (2,2)
-C Agent could Move
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-DC  D
-W   W
-WWWWW
-
-
-updating agents in big room
-Checking doors in big room
-updating agents in small Room
-Agent C
- position: (2,1)
-C Agent could Move
-Checking doors in small Room
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
-W                  W
-W                  W
-D                  D
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-WWWWWWWWWWWWWWWWWWWW
-
-WWWWW
-W   W
-C   D
-W   W
-WWWWW
-
-
-updating agents in big room
-Checking doors in big room
-updating agents in small Room
-Agent C
- position: (2,0)
-C Agent could Move
-Checking doors in small Room
-Use a door
-0 to 1
-hello is it me your looking for
-(2,0): (2,0)
-WWWWWWWWWWWWWWWWWWWW
-W                  W
-W                  W
-W                  W
-W                  W
-W                  W
-W                  F
 W                  W
 W                  W
 D                  D
@@ -477,6 +198,6 @@ WWWWW
 W   W
 D   D
 W   W
-WWWWW
+FWWWW
 
 

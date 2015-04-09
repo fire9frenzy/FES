@@ -24,7 +24,7 @@ public class Location
 	{
 		if (x == other.getX() && y == other.getY())
 		{
-			System.out.println(this + ": " + other);
+			// System.out.println(this + ": " + other);
 			return true;
 		}
 		return false;
