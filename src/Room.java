@@ -428,8 +428,7 @@ public class Room
 		{
 			Location doorPos = iterator.next();
 			Door currentDoor = doorIt.next();
-			if(space[doorPos.getX()][doorPos.getY()].hasAgent() 
-				&& !space[doorPos.getX()][doorPos.getY()].getAgent().hasUsedDoor())
+			if(space[doorPos.getX()][doorPos.getY()].hasAgent())
 			{
 				if (!space[doorPos.getX()][doorPos.getY()].getAgent().hasUsedDoor())
 				{
@@ -446,6 +445,7 @@ public class Room
 						// System.out.println(queue);
 					}
 					// else do nothing
+				// System.out.println(space[doorPos.getX()][doorPos.getY()].getAgent().hasUsedDoor());
 				}
 				else
 					space[doorPos.getX()][doorPos.getY()].getAgent().resetUsedDoor();

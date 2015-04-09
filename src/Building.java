@@ -129,7 +129,7 @@ public class Building
 		{
 			System.out.println("updating agents in " + rooms.get(i).name);
 			rooms.get(i).updateRoom();
-			System.out.println("Checking doors in" + rooms.get(i).name);
+			System.out.println("Checking doors in " + rooms.get(i).name);
 			rooms.get(i).checkAllDoors();
 		}
 		// for (int i = 0; i < rooms.size(); i++)
@@ -161,6 +161,7 @@ public class Building
 	public boolean moveAgent(Agent a, int doorID)
 	{
 		// find the matching door
+		System.out.println("Use a door");
 		for (int i = 0; i < doorPairs.size(); ++i)
 		{
 			if(doorPairs.get(i)[0] == doorID)
@@ -172,6 +173,7 @@ public class Building
 					// check for outside
 					if (doorPairs.get(i)[1] == -1)
 					{
+						System.out.println("hello is it me your looking for");
 						// hurray they made it out!!!
 						return true;
 					}
@@ -194,6 +196,7 @@ public class Building
 					if (doorPairs.get(i)[0] == -1)
 					{
 						// hurray they made it out!!!
+						System.out.println("hello is it me your looking for");
 						return true;
 					}
 					//find the room
@@ -271,10 +274,10 @@ public class Building
 		Room r = new Room();
 		r.setSize(20,20);
 		r.name = "big room";
-		// r.addDoor(9,19, new Door(++doorCount,this));
-		// pairDoors(doorCount,-1);
-		// outsideDoors++;
-		r.addAgent(new Location(5,5), "C");
+		r.addDoor(9,19, new Door(++doorCount,this));
+		pairDoors(doorCount,-1);
+		outsideDoors++;
+		// r.addAgent(new Location(5,5), "C");
 
 		r.addDoor(9, 0, new Door(++doorCount, this));
 		rooms.add(r);
