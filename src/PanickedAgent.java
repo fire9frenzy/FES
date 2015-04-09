@@ -39,6 +39,7 @@ public class PanickedAgent extends Agent
 		}
 		// System.out.println("Agent could Move");
 
+
 		Iterator<Location> iterator = possible.iterator();
 
 		while(iterator.hasNext())
