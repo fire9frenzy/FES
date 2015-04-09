@@ -11,6 +11,7 @@ public class Space
  	private int dimension = 1;
  	Agent agent = null;
  	private int[] values;
+ 	private boolean onFire = false;
  	//dimension 1x1 meters
  	public Space(int type)
  	{
@@ -51,6 +52,10 @@ public class Space
  		if(agent != null)
  		{
  			return agent.getType();
+ 		}
+ 		if(onFire)
+ 		{
+ 			return "F";
  		}
  		if(type == 0)
  		{
@@ -111,6 +116,11 @@ public class Space
 	public int getFloor()
  	{
  		return 2;
+ 	}
+
+ 	public void setOnFire()
+ 	{
+ 		onFire = true;
  	}
 
 	public int getDoor()

@@ -61,10 +61,18 @@ public class Building
 			}
 		}
 
+		startFire();
 		// for(int i = 0; i < rooms.size(); i++)
 		// {
 		// 	rooms.get(i).initiateRoom();
 		// }
+	}
+
+	private void startFire()
+	{
+		Random random = new Random();
+		int index = random.nextInt(rooms.size());
+		rooms.get(index).produceFire();
 	}
 
 	private void initiate(Room room, int[] doorPair ,int index)
