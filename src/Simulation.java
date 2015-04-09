@@ -24,37 +24,17 @@ public class Simulation
 	private static int incrementP = 0;	
 	public static void main(String[] args)
 	{
-		Building lab = new Building();
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
-		lab.placeAgents(1);
-		lab.initiate();		// new Simulation();
 		getValuesFromUsers();
-		System.out.println(inputFile.getAbsolutePath());
-		System.out.println(calmPercentage);
-		System.out.println(startingP);
-		System.out.println(incrementP);
-		// System.out.println()
-
-		// System.exit(0);
-		// Building lab = new Building();
-		// // lab.addRoom(new Room());
-		// // lab.addRoom(new Room());
-		// // lab.addRoom(new Room());
-		// lab.placeAgents(5);
-		// lab.initiate();
-		
-		// // System.out.println(lab);
-		// do
-		// {
-		// 	lab.update();
-		// 	// System.out.println(lab);
-		// 	// System.out.println("-------------------------------------------------------");
-		// 	// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-		// }
-		// while(!lab.isEmpty());
-		// System.out.println(lab);
+		// System.out.println(inputFile.getAbsolutePath());
+		// System.out.println(calmPercentage);
+		// System.out.println(startingP);
+		// System.out.println(incrementP);
+		Building lab = new Building(inputFile);
+		lab.placeAgents(startingP,calmPercentage);
+		lab.initiate();		// new Simulation();
 		do
 		{
 			lab.update();
@@ -68,7 +48,7 @@ public class Simulation
 
 	public static void getValuesFromUsers()
 	{
-		int[] test = new int[1];
+		// int[] test = new int[1];
 		// JFrame frame = new JFrame("Fire Emergency Simulatior Parameters");
 		// frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// frame.setSize(300, 400);

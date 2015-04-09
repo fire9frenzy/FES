@@ -7,11 +7,10 @@ public class Building
 	private ArrayList<int[]> doorPairs = new ArrayList<int[]>();
 	private int doorCount = 0;
 	private int outsideDoors = 0;
-	public Building()
+	public Building(File file)
 	{
 		// fakeParse();
-		// fileParse("../buildings/BryanBuilding.building");
-		fileParse("../buildings/test.building");
+		fileParse(file);
 	}
 
 	public void initiate()
@@ -54,7 +53,7 @@ public class Building
 						// System.out.println(doorPairs.get(j)[pairIndex]);
 						if(rooms.get(k).hasDoor(doorPairs.get(j)[pairIndex]))
 						{
-							System.out.println("inside");
+							// System.out.println("inside");
 							initiate(rooms.get(k),doorPairs.get(j), i);
 							k = rooms.size();
 						}
@@ -83,7 +82,7 @@ public class Building
 	private void initiate(Room room, int[] doorPair ,int index)
 	{
 		room.initiateRoom(doorPair, index);
-		System.out.println(doorPair[1] + "hello");
+		// System.out.println(doorPair[1] + "hello");
 		for(int i = 0; i < room.doorAmount(); i++)
 		{
 			int tempID = room.getDoorID(i);
@@ -158,14 +157,19 @@ public class Building
 	{
 		doorPairs.add(new int[] {f, s});
 	}
-	public void placeAgents(int total)
+	public void placeAgents(int total, double percentage)
 	{
 		for (int i = 0; i < total; ++i)
 		{
 			// pick a type
 			String type = "C";
-			if (Math.random() > 0.5)
+			Random random = new Random();
+			// System.out.println(percentage);
+			if (random.nextInt(100) > percentage)
+			{
+				// System.out.println("in");
 				type = "P";
+			}
 			// pick a room
 			int r = (int)Math.floor(Math.random() * rooms.size());
 			rooms.get(r).setAgent(type);
@@ -313,16 +317,16 @@ public class Building
 		// 	System.out.println(doorPairs.get(i)[1]);
 		// }
 	}
-	public void fileParse(String fileName)
+	public void fileParse(File file)
 	{
 		try
 		{
-			Scanner sc = new Scanner(new File(fileName));
+			Scanner sc = new Scanner(file);
 			// find first <room>
 			while(sc.hasNext())
 			{
 				String line = sc.nextLine();
-				System.out.println(line);
+				// System.out.println(line);
 				if (line.equals("<room>"))
 				{
 					parseRoom(sc);
@@ -333,7 +337,7 @@ public class Building
 					// temp.addAgent(new Location(2,2), "C");
 				}
 			}
-			sc = new Scanner(new File(fileName));
+			sc = new Scanner(file);
 			addDoors(sc);
 		}
 		catch(IOException e)
@@ -358,15 +362,15 @@ public class Building
 		// create pairs
 		for (int i = 0; i < doorSetup.size(); ++i)
 		{
-			for (int j = 0; j < doorSetup.get(i).length; ++j)
-			{
-				System.out.print(doorSetup.get(i)[j] + ", ");
-			}
+			// for (int j = 0; j < doorSetup.get(i).length; ++j)
+			// {
+			// 	System.out.print(doorSetup.get(i)[j] + ", ");
+			// }
 			System.out.println();
 			pairDoors(doorSetup.get(i)[1], doorSetup.get(i)[2]);
 			if (doorSetup.get(i)[0] == -1)
 			{
-				System.out.println("outside Door");
+				// System.out.println("outside Door");
 				++outsideDoors;
 			}
 		}
@@ -480,8 +484,8 @@ public class Building
 		{
 			temp.addDoor(doorPos.get(i).getX(), doorPos.get(i).getY(), doors.get(i));
 		}
-		System.out.println("All the doors");
-		temp.printDoors();
+		// System.out.println("All the doors");
+		// temp.printDoors();
 		rooms.add(temp);
 	}
 }
