@@ -32,6 +32,8 @@ public class Room
 		// System.out.println("asdasda");
 		setValues(doorPair, index);
 		setAgentQueue();
+		// System.out.println("-----------------------------------------------------------------");
+		// printValues();
 	}
 
 	public boolean leadsOutside()
@@ -310,7 +312,7 @@ public class Room
 		}
 
 		ArrayList<Location> adjecent = new ArrayList<Location>();
-
+		// System.out.println(location.size());
 		Iterator<Location> iterator = location.iterator();
 		while(iterator.hasNext())
 		{
@@ -369,6 +371,7 @@ public class Room
 	{	
 		// System.out.println(doorLocation.get(0));
 		// System.out.println(doorLocation.get(1));
+		// System.out.println(space[0][0].getLayerAmount());
 		for(int k = 0; k < space[0][0].getLayerAmount(); k++)
 		{
 			for(int i = 0; i < space.length; i++)
