@@ -129,6 +129,7 @@ public class Room extends Canvas
 			{
 				fireSpread();
 			}
+			updates = 0;
 		}
 		Iterator<Agent> iterator = queue.iterator();
 		// System.out.println("queue size" +queue.size());

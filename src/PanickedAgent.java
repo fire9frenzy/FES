@@ -70,19 +70,31 @@ public class PanickedAgent extends Agent
 
 		if((((x-2) >= 0) && ((x-2) < room.length)) && room[x-2][y].getType() != room[x][y].getWall())
 		{
-			possibles.add(new Location(x-2,y));
+			if(room[x-1][y].getType() != room[x][y].getWall())
+			{
+				possibles.add(new Location(x-2,y));	
+			}	
 		}
 		if((((x+2) >= 0) && ((x+2) < room.length)) && room[x+2][y].getType() != room[x][y].getWall())
 		{
-			possibles.add(new Location(x+2,y));
+			if(room[x+1][y].getType()!= room[x][y].getWall())
+			{
+				possibles.add(new Location(x+2,y));
+			}
 		}
 		if((((y-2) >= 0) && ((y-2) < room[x].length)) && room[x][y-2].getType() != room[x][y].getWall())
 		{
-			possibles.add(new Location(x,y-2));
+			if(room[x][y-1].getType()!= room[x][y].getWall())
+			{
+				possibles.add(new Location(x,y-2));
+			}
 		}
 		if((((y+2) >= 0) && ((y+2) < room[x].length)) && room[x][y+2].getType() != room[x][y].getWall())
 		{
-			possibles.add(new Location(x,y+2));
+			if(room[x][y+1].getType()!= room[x][y].getWall())
+			{
+				possibles.add(new Location(x,y+2));
+			}
 		}
 
 		return possibles;
