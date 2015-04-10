@@ -19,4 +19,8 @@ public class Door
 	{
 		return build.getDoorValue(id);
 	}
+	public String getDoorPairIndex()
+	{
+		return build.getDoorPairIndex(id);
+	}
 }

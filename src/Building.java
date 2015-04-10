@@ -314,9 +314,9 @@ public class Building
 		String out = "";
 		for (int i = 0; i < rooms.size(); ++i)
 		{
-			// out += rooms.get(i) + "\n";
-			System.out.println("------------------------------------------------------------------");
-			rooms.get(i).printValues();
+			out += rooms.get(i) + "\n";
+			// System.out.println("------------------------------------------------------------------");
+			// rooms.get(i).printValues();
 		}
 		return out;
 	}
@@ -582,5 +582,21 @@ public class Building
 		}
 		frame.pack();
 		frame.setVisible(true);
+	}
+	public String getDoorPairIndex(int doorID)
+	{
+		// find door pair
+		for (int i = 0; i < doorPairs.size(); ++i)
+		{
+			if (doorPairs.get(i)[0] == doorID || doorPairs.get(i)[1] == doorID)
+			{
+				if (doorPairs.get(i)[0] == -1 || doorPairs.get(i)[1] == -1)
+				{
+					return "EX";
+				}
+				return "" + i;
+			}
+		}
+		return "Never Get here";
 	}
 }

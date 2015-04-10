@@ -39,8 +39,12 @@ public class Room extends Canvas
 		// System.out.println("asdasda");
 		// valuesSet[index]= true;
 		setSize(space[0].length * tileSize, space.length * tileSize);
+		//0 -> wall
+		//1 -> obstacle
+		//2 -> floor
+		//3 -> door
 		colors[0] = new Color(0,0,0);
-		colors[1] = new Color(255,0,0);
+		colors[1] = new Color(255,136,0);
 		colors[2] = new Color(255,255,255);
 		colors[3] = new Color(0,255,0);
 
@@ -128,6 +132,7 @@ public class Room extends Canvas
 			if(onFire)
 			{
 				fireSpread();
+				updates = 0;
 			}
 		}
 		Iterator<Agent> iterator = queue.iterator();
@@ -609,6 +614,10 @@ public class Room extends Canvas
 					w *= 2;
 					if (w > 180)
 						w = 180;
+					// w *= 8;
+					// if (w > 180)
+					// 	w = 180;
+
 					ctx.setColor(new Color(255 - w, 255 - w, 255 - w));
 					ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);
 				}
@@ -619,7 +628,19 @@ public class Room extends Canvas
 					ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);		
 				}
 				// draw door numbers
-				
+				if (space[i][j].getType() == 3)
+				{
+					// find door index
+					int index = 0;
+					for (int x = 0; x < doorLocation.size(); ++x)
+					{
+						if(doorLocation.get(x).equals(new Location(i,j)))
+							index = x;
+					}
+					// draw that index
+					ctx.setColor(new Color(0, 0, 0));
+					ctx.drawString(doors.get(index).getDoorPairIndex(), tileSize * j, tileSize * i + tileSize);
+				}
 				// draw agents
 				if (space[i][j].hasAgent())
 				{
@@ -693,5 +714,4 @@ public class Room extends Canvas
 
 		return temp;
 	}
-
 }
