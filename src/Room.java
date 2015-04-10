@@ -183,7 +183,10 @@ public class Room extends Canvas
 				}
 			}
 		}
-
+		if (available.size() < 1)
+		{
+			return;
+		}
 		int index = random.nextInt(available.size());
 		Location location = available.get(index);
 		Agent temp = createAgent(agentType);
@@ -205,7 +208,7 @@ public class Room extends Canvas
 
 	public boolean full()
 	{
-		return (agentsPlaced == totalFloors);
+		return false;
 	}
 
 	public String toString()
@@ -576,15 +579,33 @@ public class Room extends Canvas
 		{
 			for (int j = 0; j < space[i].length; ++j)
 			{
+				// draw walls doors and obsticals
 				ctx.setColor(colors[space[i][j].getType()]);
 				ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);
+				// show weights
+				if (space[i][j].getType() == 2)
+				{
+					int w = space[i][j].getValueAt(0);
+					w *= 4;
+					ctx.setColor(new Color(255 - w, 255 - w, 255 - w));
+					ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);
+				}
+				// draw door numbers
+				// draw agents
 				if (space[i][j].hasAgent())
 				{
 					// draw circle
 					if (space[i][j].getAgent().getType().equals("C"))
-						ctx.setColor(new Color(0,0,180));
+						if (space[i][j].getAgent().ableToMove())
+							ctx.setColor(new Color(0,0,180));
+						else
+							ctx.setColor(new Color(100,100,100));
 					else
-						ctx.setColor(new Color(180,0,0));
+						if (space[i][j].getAgent().ableToMove())
+							ctx.setColor(new Color(180,0,0));
+						else
+							ctx.setColor(new Color(100,100,100));
+						// ctx.setColor(new Color(180,0,0));
 					ctx.fillOval(j * tileSize, i * tileSize, tileSize, tileSize);
 				}
 			}

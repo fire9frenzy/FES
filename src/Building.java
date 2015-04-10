@@ -174,7 +174,11 @@ public class Building
 			}
 			// pick a room
 			int r = (int)Math.floor(Math.random() * rooms.size());
-			rooms.get(r).setAgent(type);
+			// if (rooms.get(r).full())
+				// System.out.println("Room full");
+			// else
+				rooms.get(r).setAgent(type);
+
 		}
 	}
 	public boolean moveAgent(Agent a, int doorID)
@@ -341,6 +345,7 @@ public class Building
 			}
 			sc = new Scanner(file);
 			addDoors(sc);
+			sc.close();
 		}
 		catch(IOException e)
 		{
@@ -466,6 +471,7 @@ public class Building
 					System.out.println(parts[i]);
 				}
 			}
+
 		}
 		// System.out.println("Parsing over");
 		// convert to arrays
@@ -493,7 +499,7 @@ public class Building
 	public void createGUI()
 	{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		frame.setLayout(new GridLayout());
 		// add each rooms canvas
 		for (int i = 0; i < rooms.size(); ++i)
 		{

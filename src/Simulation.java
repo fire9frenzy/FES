@@ -28,6 +28,7 @@ public class Simulation
 		// lab.addRoom(new Room());
 		// lab.addRoom(new Room());
 		getValuesFromUsers();
+		boolean showEvac = true;
 		// System.out.println(inputFile.getAbsolutePath());
 		// System.out.println(calmPercentage);
 		// System.out.println(startingP);
@@ -37,18 +38,22 @@ public class Simulation
 		Building lab = new Building(inputFile);
 		lab.placeAgents(startingP,calmPercentage);
 		lab.initiate();		// new Simulation();
-		lab.createGUI();
+		if (showEvac)
+			lab.createGUI();
 
 		// used for manual stepping
 		// Scanner scan = new Scanner(System.in);
-
+		int updateCount = 0;
 		do
 		{
+			++updateCount;
 			lab.update();
 			// scan.next();
-			Thread.sleep(500);
+			if (showEvac)
+				Thread.sleep(500);
 		}
 		while(!lab.isEmpty());
+		System.out.println("Total number of Updates\n" + updateCount);
 	}
 
 	public static void getValuesFromUsers()
