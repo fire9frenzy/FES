@@ -1,0 +1,574 @@
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W  C    WC W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F      C W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W   C   W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W   C   W  W     W
+W       WCWW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F     C  W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W  C    W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W    C  W  W     W
+W       W WW     W
+W        C       W
+W       W  WWWWWWW
+W       W  W     W
+W       F    C   W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W C     W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W     C W  W     W
+W       W WW     W
+W                W
+W       WC WWWWWWW
+W       W  W     W
+W       F   C    W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+WC      W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W      CW  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       WC W     W
+W       F  C     W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+DC               W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W      CW WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       FCC      W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W      C         W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       WCCW     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W       C        W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       WCCW     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W        C       W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       WCCW     W
+WWWWWWWWW WWWWWWWW
+D                W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       WC WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       WC W     W
+WWWWWWWWWCWWWWWWWW
+D                W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       WC W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W CW     W
+WWWWWWWWW WWWWWWWW
+D        C       W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       FC       W
+W       W  W     W
+W       W  W     W
+W       WC W     W
+WWWWWWWWW WWWWWWWW
+D       C        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       WC W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWWCWWWWWWWW
+D      C         W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       WC W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D     C  C       W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       WC W     W
+WWWWWWWWW WWWWWWWW
+D    C  C        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWWCWWWWWWWW
+D   C  C         W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D  C  C  C       W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D C  C  C        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+DC  C  C         W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D  C  C          W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D C  C           W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+DC  C            W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D  C             W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D C              W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+DC               W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+
+WWWWWWWWWWWWWWWWWW
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W       W WW     W
+W                W
+W       W  WWWWWWW
+W       W  W     W
+W       F        W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+WWWWWWWWW WWWWWWWW
+D                W
+W       W  W     W
+W       W  W     W
+W       W  W     W
+W          WWWWW W
+W          W     W
+WWWWWWWWWWWWDWWWWW
+
+

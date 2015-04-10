@@ -1,6 +1,7 @@
 import java.util.*;
-
-public class Room
+import java.awt.*;
+import javax.swing.*;
+public class Room extends Canvas
 {
 	public String name = "Room";
 	private int wall = 0;
@@ -13,6 +14,7 @@ public class Room
 	private ArrayList<Door> doors = new ArrayList<Door>();
 	private int totalFloors = 0;
 	private boolean leadOutside = false;
+	private int tileSize = 16;
 	//    0 1 2 3
 	//    _ _ _ _
 	// 0 | | | | |  x = (1,2)
@@ -22,7 +24,7 @@ public class Room
 	private Space[][] space;
 	public Room()
 	{
-		// test();
+		
 	}
 	public Space[][] getSpace()
 	{
@@ -33,6 +35,11 @@ public class Room
 		// System.out.println("asdasda");
 		setValues(doorPair, index);
 		setAgentQueue();
+		setSize(space[0].length * tileSize, space.length * tileSize);
+		colors[0] = new Color(0,0,0);
+		colors[1] = new Color(255,0,0);
+		colors[2] = new Color(255,255,255);
+		colors[3] = new Color(0,255,0);
 		// System.out.println("-----------------------------------------------------------------");
 		// printValues();
 	}
@@ -484,26 +491,26 @@ public class Room
 		// find the doors location
 		return false;
 	}
-	public void setSize(int w, int h)
-	{
-		space = new Space[w][h];
-		for (int i = 0; i < space.length; ++i)
-		{
-			for (int j = 0; j < space[i].length; ++j)
-			{
-				if (j == 0 || j == h - 1 || i == 0 || i == w - 1)
-				{
-					space[i][j] = new Space(wall);
-				}
-				else
-				{
-					space[i][j] = new Space(floor);
-					++totalFloors;
-				}
-			}
-		}
-		// System.out.println("The room looks like this\n" + this);
-	}
+	// public void setSize(int w, int h)
+	// {
+	// 	space = new Space[w][h];
+	// 	for (int i = 0; i < space.length; ++i)
+	// 	{
+	// 		for (int j = 0; j < space[i].length; ++j)
+	// 		{
+	// 			if (j == 0 || j == h - 1 || i == 0 || i == w - 1)
+	// 			{
+	// 				space[i][j] = new Space(wall);
+	// 			}
+	// 			else
+	// 			{
+	// 				space[i][j] = new Space(floor);
+	// 				++totalFloors;
+	// 			}
+	// 		}
+	// 	}
+	// 	// System.out.println("The room looks like this\n" + this);
+	// }
 
 	public int doorAmount()
 	{
@@ -554,6 +561,33 @@ public class Room
 		for (int i = 0; i < doors.size(); ++i)
 		{
 			System.out.println(doors.get(i).getID());
+		}
+	}
+
+
+	private Color[] colors = new Color[4];
+	public void paint(Graphics ctx)
+	{
+		//0 -> wall
+		//1 -> obstacle
+		//2 -> floor
+		//3 -> door
+		for (int i = 0; i < space.length; ++i)
+		{
+			for (int j = 0; j < space[i].length; ++j)
+			{
+				ctx.setColor(colors[space[i][j].getType()]);
+				ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);
+				if (space[i][j].hasAgent())
+				{
+					// draw circle
+					if (space[i][j].getAgent().getType().equals("C"))
+						ctx.setColor(new Color(0,0,180));
+					else
+						ctx.setColor(new Color(180,0,0));
+					ctx.fillOval(j * tileSize, i * tileSize, tileSize, tileSize);
+				}
+			}
 		}
 	}
 }

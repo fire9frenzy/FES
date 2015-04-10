@@ -1,8 +1,10 @@
 import java.util.*;
-// import java.util.Scanner;
 import java.io.*;
+import java.awt.*;
+import javax.swing.*;
 public class Building
 {
+	private JFrame frame = new JFrame("Building");
 	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private ArrayList<int[]> doorPairs = new ArrayList<int[]>();
 	private int doorCount = 0;
@@ -142,11 +144,11 @@ public class Building
 			rooms.get(i).updateRoom();
 			// System.out.println("Checking doors in " + rooms.get(i).name);
 			rooms.get(i).checkAllDoors();
+			rooms.get(i).repaint();
 		}
 		System.out.println(this);
-		// for (int i = 0; i < rooms.size(); i++)
-		// {
-		// }
+		// frame.validate();
+		// frame.repaint();
 	}
 
 	public void addRoom(Room r)
@@ -288,27 +290,27 @@ public class Building
 	}
 	public void fakeParse()
 	{
-		Room r = new Room();
-		r.setSize(20,20);
-		r.name = "big room";
-		r.addDoor(9,19, new Door(++doorCount,this));
-		pairDoors(doorCount,-1);
-		outsideDoors++;
-		// r.addAgent(new Location(5,5), "C");
+		// Room r = new Room();
+		// r.setSize(20,20);
+		// r.name = "big room";
+		// r.addDoor(9,19, new Door(++doorCount,this));
+		// pairDoors(doorCount,-1);
+		// outsideDoors++;
+		// // r.addAgent(new Location(5,5), "C");
 
-		r.addDoor(9, 0, new Door(++doorCount, this));
-		rooms.add(r);
-		Room s = new Room();
-		s.setSize(5,5);
-		s.addDoor(2,4, new Door(++doorCount, this));
+		// r.addDoor(9, 0, new Door(++doorCount, this));
+		// rooms.add(r);
+		// Room s = new Room();
+		// s.setSize(5,5);
+		// s.addDoor(2,4, new Door(++doorCount, this));
 		
-		pairDoors(doorCount, doorCount - 1);
+		// pairDoors(doorCount, doorCount - 1);
 
-		s.addDoor(2,0, new Door(++doorCount, this));
-		pairDoors(doorCount, -1);
-		outsideDoors++;
-		rooms.add(s);
-		s.name = "small Room";
+		// s.addDoor(2,0, new Door(++doorCount, this));
+		// pairDoors(doorCount, -1);
+		// outsideDoors++;
+		// rooms.add(s);
+		// s.name = "small Room";
 
 		// for(int i = 0; i < doorPairs.size(); ++i)
 		// {
@@ -487,5 +489,17 @@ public class Building
 		// System.out.println("All the doors");
 		// temp.printDoors();
 		rooms.add(temp);
+	}
+	public void createGUI()
+	{
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		// add each rooms canvas
+		for (int i = 0; i < rooms.size(); ++i)
+		{
+			frame.add(rooms.get(i));
+		}
+		frame.pack();
+		frame.setVisible(true);
 	}
 }
