@@ -119,4 +119,8 @@ public class Space
  	{
  		return 3;
  	}
+ 	public boolean isOnFire()
+ 	{
+ 		return onFire;
+ 	}
 }
