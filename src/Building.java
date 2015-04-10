@@ -55,7 +55,6 @@ public class Building
 						// System.out.println(doorPairs.get(j)[pairIndex]);
 						if(rooms.get(k).hasDoor(doorPairs.get(j)[pairIndex]))
 						{
-							System.out.println("inside");
 							initiate(rooms.get(k),doorPairs.get(j));
 							k = rooms.size();
 						}
@@ -229,7 +228,7 @@ public class Building
 			rooms.get(i).checkAllDoors();
 			rooms.get(i).repaint();
 		}
-		System.out.println(this);
+		// System.out.println(this);
 		// for (int i = 0; i < rooms.size(); i++)
 		// {
 		// }
@@ -422,9 +421,10 @@ public class Building
 			addDoors(sc);
 			sc.close();
 		}
-		catch(IOException e)
+		catch(Exception e)
 		{
 			System.out.println("File not Found");
+			System.exit(0);
 		}
 	}
 	private ArrayList<int[]> doorSetup = new ArrayList<int[]>();
@@ -448,7 +448,6 @@ public class Building
 			// {
 			// 	System.out.print(doorSetup.get(i)[j] + ", ");
 			// }
-			System.out.println();
 			pairDoors(doorSetup.get(i)[1], doorSetup.get(i)[2]);
 			if (doorSetup.get(i)[0] == -1)
 			{
