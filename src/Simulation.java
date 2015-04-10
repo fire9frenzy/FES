@@ -24,9 +24,7 @@ public class Simulation
 	private static int incrementP = 0;	
 	public static void main(String[] args) throws InterruptedException
 	{
-		// lab.addRoom(new Room());
-		// lab.addRoom(new Room());
-		// lab.addRoom(new Room());
+
 		getValuesFromUsers();
 		boolean showEvac = true;
 		// System.out.println(inputFile.getAbsolutePath());
@@ -36,7 +34,9 @@ public class Simulation
 
 
 		Building lab = new Building(inputFile);
+		// System.out.println("Placing Agents");
 		lab.placeAgents(startingP,calmPercentage);
+		// System.out.println("initiating weights");
 		lab.initiate();		// new Simulation();
 		if (showEvac)
 			lab.createGUI();

@@ -9,27 +9,15 @@ public class CalmAgent extends Agent
 		setType("C");
 	}
 
-	public Location getNextMove(int doors,Space[][] room)
+	public Location getNextMove(Space[][] room)
 	{
 
 		Location position = super.getPosition();
-		int doorToGo = 0;
-		int valueOfDoor = room[position.getX()][position.getY()].getValueAt(doorToGo);
-
-		for(int i = 1; i < doors; i++)
-		{
-			if(valueOfDoor >= room[position.getX()][position.getY()].getValueAt(i))
-			{
-				valueOfDoor = room[position.getX()][position.getY()].getValueAt(i);
-				doorToGo = i;
-			}
-		}
-
 		int x = position.getX();
 		int y = position.getY();
 
 		ArrayList<Location> possible = getPossibles(x,y,room);
-		int min = room[x][y].getValueAt(doorToGo);
+		int min = room[x][y].getValueAt();
 		Location best = position;
 
 		// System.out.println(super.ableToMove());
@@ -46,11 +34,11 @@ public class CalmAgent extends Agent
 		while(iterator.hasNext())
 		{
 			Location temp = iterator.next();
-			if(room[temp.getX()][temp.getY()].getValueAt(doorToGo) <= min)
+			if(room[temp.getX()][temp.getY()].getValueAt() <= min)
 			{
 				if(!room[temp.getX()][temp.getY()].hasAgent())
 				{
-					min = room[temp.getX()][temp.getY()].getValueAt(doorToGo);
+					min = room[temp.getX()][temp.getY()].getValueAt();
 					best = temp;	
 				}
 			}

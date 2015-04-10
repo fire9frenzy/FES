@@ -10,12 +10,13 @@ public class Space
  	private int type = 0;
  	private int dimension = 1;
  	Agent agent = null;
- 	private int[] values;
+ 	private int values;
  	private boolean onFire = false;
  	//dimension 1x1 meters
  	public Space(int type)
  	{
  		this.type = type;
+ 		values = -1;
  	}
 
  	public void setAgent(Agent agent)
@@ -73,34 +74,25 @@ public class Space
  		return " ";
  	}
 
- 	public void setPossibleDoors(int sizeValues)
+ 	public void setPossibleDoors()
  	{
- 		values = new int[sizeValues];
- 		for(int i = 0; i < values.length; i++)
- 		{
- 			values[i] = -1;
- 		}
+ 		values = -1;
  	}
 
- 	public void setValueAt(int value, int index)
+ 	public void setValueAt(int value)
  	{
- 		values[index] = value;
+ 		values = value;
  	}
 
- 	public int getValueAt(int index)
+ 	public int getValueAt()
  	{
- 		return values[index];
+ 		return values;
  	}
 
 
- 	public boolean isValueSet(int index)
+ 	public boolean isValueSet()
  	{
- 		return !(values[index]==-1);
- 	}
-
- 	public int getLayerAmount()
- 	{
- 		return values.length;
+ 		return !(values == -1);
  	}
 
  	public int getWall()
