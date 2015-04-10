@@ -662,11 +662,14 @@ public class Room extends Canvas
 		{
 			for(int j = -1; j < 2; ++j)
 			{
-				if(space[fire.getX()+i][fire.getY()+j].getType() == wall)
+				if(validLocation(fire.getX()+i,fire.getY()+j))
 				{
-					if(!space[fire.getX()+i][fire.getY()+j].isOnFire())
+					if(space[fire.getX()+i][fire.getY()+j].getType() == wall)
 					{
-						space[fire.getX()+i][fire.getY()+j].setOnFire();	
+						if(!space[fire.getX()+i][fire.getY()+j].isOnFire())
+						{
+							space[fire.getX()+i][fire.getY()+j].setOnFire();	
+						}
 					}
 				}
 			}
