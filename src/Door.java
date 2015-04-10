@@ -15,8 +15,8 @@ public class Door
 	{
 		return id;
 	}
-	public int getOtherValue(int layerIndex)
+	public int getOtherValue()
 	{
-		return build.getDoorValue(id, layerIndex);
+		return build.getDoorValue(id);
 	}
 }

@@ -1,10 +1,8 @@
 import java.util.*;
+// import java.util.Scanner;
 import java.io.*;
-import java.awt.*;
-import javax.swing.*;
 public class Building
 {
-	private JFrame frame = new JFrame("Building");
 	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private ArrayList<int[]> doorPairs = new ArrayList<int[]>();
 	private int doorCount = 0;
@@ -18,10 +16,10 @@ public class Building
 	public void initiate()
 	{
 
-		for(int i = 0; i < rooms.size(); i++)
-		{
-			rooms.get(i).setTotalLayers(outsideDoors);
-		}	
+		// for(int i = 0; i < rooms.size(); i++)
+		// {
+		// 	rooms.get(i).setTotalLayers(outsideDoors);
+		// }	
 
 		// for(int i = 0; i < doorPairs.size(); i++)
 		// {
@@ -55,8 +53,8 @@ public class Building
 						// System.out.println(doorPairs.get(j)[pairIndex]);
 						if(rooms.get(k).hasDoor(doorPairs.get(j)[pairIndex]))
 						{
-							// System.out.println("inside");
-							initiate(rooms.get(k),doorPairs.get(j), i);
+							System.out.println("inside");
+							initiate(rooms.get(k),doorPairs.get(j));
 							k = rooms.size();
 						}
 					}
@@ -81,9 +79,41 @@ public class Building
 		rooms.get(index).produceFire();
 	}
 
-	private void initiate(Room room, int[] doorPair ,int index)
+	// private void initiate(Room room, int[] doorPair ,int index)
+	// {
+	// 	room.initiateRoom(doorPair, index);
+	// 	// System.out.println(doorPair[1] + "hello");
+	// 	for(int i = 0; i < room.doorAmount(); i++)
+	// 	{
+	// 		int tempID = room.getDoorID(i);
+	// 		if(tempID == doorPair[0] || tempID == doorPair[1])
+	// 		{
+	// 			// System.out.println(tempID);
+	// 			continue;
+	// 		}
+	// 		int[] pair = getDoorPair(tempID);
+	// 		if(pair[0] == -1 || pair[1] == -1)
+	// 		{
+	// 			continue;
+	// 		}
+	// 		int other = pair[0];
+	// 		if(pair[0] ==  tempID)
+	// 		{
+	// 			other = pair[1];
+	// 		}
+
+	// 		Room next = findRoomWithID(other);
+	// 		initiate(next,pair,index);
+	// 	}
+	// }
+
+	private void initiate(Room room, int[] doorPair)
 	{
-		room.initiateRoom(doorPair, index);
+		// System.out.println(room);
+		if(!room.initiateRoom(doorPair))
+		{
+			return;
+		}
 		// System.out.println(room);
 		// room.printValues();
 		// System.out.println(room);
@@ -108,7 +138,7 @@ public class Building
 			}
 
 			Room next = findRoomWithID(other);
-			next.initiateRoom(pair,index);
+			next.initiateRoom(pair);
 			// System.out.println(next);
 			// next.printValues();
 		}
@@ -133,6 +163,7 @@ public class Building
 			}
 
 			Room next = findRoomWithID(other);
+			// System.out.println(next);
 			for(int j = 0; j < next.doorAmount(); j++)
 			{
 				int tempID2 = next.getDoorID(j);
@@ -152,12 +183,8 @@ public class Building
 					other2 = pair2[1];
 				}
 				Room next2 = findRoomWithID(other2);
-				if(next2.isRoomValuesSet(index))
-				{
-					continue;
-				}
 				// System.out.println("asdasda");
-				initiate(next2,pair2,index);
+				initiate(next2,pair2);
 			}
 		}
 
@@ -198,11 +225,11 @@ public class Building
 			rooms.get(i).updateRoom();
 			// System.out.println("Checking doors in " + rooms.get(i).name);
 			rooms.get(i).checkAllDoors();
-			rooms.get(i).repaint();
 		}
 		System.out.println(this);
-		// frame.validate();
-		// frame.repaint();
+		// for (int i = 0; i < rooms.size(); i++)
+		// {
+		// }
 	}
 
 	public void addRoom(Room r)
@@ -219,13 +246,8 @@ public class Building
 		{
 			// pick a type
 			String type = "C";
-			Random random = new Random();
-			// System.out.println(percentage);
-			if (random.nextInt(100) > percentage)
-			{
-				// System.out.println("in");
+			if (Math.random() > (percentage/100.0))
 				type = "P";
-			}
 			// pick a room
 			int r = (int)Math.floor(Math.random() * rooms.size());
 			rooms.get(r).setAgent(type);
@@ -289,9 +311,9 @@ public class Building
 		String out = "";
 		for (int i = 0; i < rooms.size(); ++i)
 		{
-			out += rooms.get(i) + "\n";
-			// System.out.println("------------------------------------------------------------------");
-			// rooms.get(i).printValues();
+			// out += rooms.get(i) + "\n";
+			System.out.println("------------------------------------------------------------------");
+			rooms.get(i).printValues();
 		}
 		return out;
 	}
@@ -311,7 +333,7 @@ public class Building
 		return empty;
 	}
 	// build.getDoorValue(id, layerIndex);
-	public int getDoorValue(int doorID, int layerIndex)
+	public int getDoorValue(int doorID)
 	{
 		// find door pair
 		for (int i = 0; i < doorPairs.size(); ++i)
@@ -322,7 +344,7 @@ public class Building
 				{
 					if (rooms.get(j).hasDoor(doorPairs.get(i)[1]))
 					{
-						return rooms.get(j).getDoorValueAt(doorPairs.get(i)[1], layerIndex);
+						return rooms.get(j).getDoorValueAt(doorPairs.get(i)[1]);
 					}
 				}
 			}
@@ -332,7 +354,7 @@ public class Building
 				{
 					if (rooms.get(j).hasDoor(doorPairs.get(i)[0]))
 					{
-						return rooms.get(j).getDoorValueAt(doorPairs.get(i)[0], layerIndex);
+						return rooms.get(j).getDoorValueAt(doorPairs.get(i)[0]);
 					}
 				}
 			}
@@ -344,27 +366,27 @@ public class Building
 	}
 	public void fakeParse()
 	{
-		// Room r = new Room();
-		// r.setSize(20,20);
-		// r.name = "big room";
-		// r.addDoor(9,19, new Door(++doorCount,this));
-		// pairDoors(doorCount,-1);
-		// outsideDoors++;
-		// // r.addAgent(new Location(5,5), "C");
+		Room r = new Room();
+		r.setSize(20,20);
+		r.name = "big room";
+		r.addDoor(9,19, new Door(++doorCount,this));
+		pairDoors(doorCount,-1);
+		outsideDoors++;
+		// r.addAgent(new Location(5,5), "C");
 
-		// r.addDoor(9, 0, new Door(++doorCount, this));
-		// rooms.add(r);
-		// Room s = new Room();
-		// s.setSize(5,5);
-		// s.addDoor(2,4, new Door(++doorCount, this));
+		r.addDoor(9, 0, new Door(++doorCount, this));
+		rooms.add(r);
+		Room s = new Room();
+		s.setSize(5,5);
+		s.addDoor(2,4, new Door(++doorCount, this));
 		
-		// pairDoors(doorCount, doorCount - 1);
+		pairDoors(doorCount, doorCount - 1);
 
-		// s.addDoor(2,0, new Door(++doorCount, this));
-		// pairDoors(doorCount, -1);
-		// outsideDoors++;
-		// rooms.add(s);
-		// s.name = "small Room";
+		s.addDoor(2,0, new Door(++doorCount, this));
+		pairDoors(doorCount, -1);
+		outsideDoors++;
+		rooms.add(s);
+		s.name = "small Room";
 
 		// for(int i = 0; i < doorPairs.size(); ++i)
 		// {
@@ -373,16 +395,16 @@ public class Building
 		// 	System.out.println(doorPairs.get(i)[1]);
 		// }
 	}
-	public void fileParse(File file)
+	public void fileParse(File fileName)
 	{
 		try
 		{
-			Scanner sc = new Scanner(file);
+			Scanner sc = new Scanner(fileName);
 			// find first <room>
 			while(sc.hasNext())
 			{
 				String line = sc.nextLine();
-				// System.out.println(line);
+				System.out.println(line);
 				if (line.equals("<room>"))
 				{
 					parseRoom(sc);
@@ -393,7 +415,7 @@ public class Building
 					// temp.addAgent(new Location(2,2), "C");
 				}
 			}
-			sc = new Scanner(file);
+			sc = new Scanner(fileName);
 			addDoors(sc);
 		}
 		catch(IOException e)
@@ -418,15 +440,15 @@ public class Building
 		// create pairs
 		for (int i = 0; i < doorSetup.size(); ++i)
 		{
-			// for (int j = 0; j < doorSetup.get(i).length; ++j)
-			// {
-			// 	System.out.print(doorSetup.get(i)[j] + ", ");
-			// }
+			for (int j = 0; j < doorSetup.get(i).length; ++j)
+			{
+				System.out.print(doorSetup.get(i)[j] + ", ");
+			}
 			System.out.println();
 			pairDoors(doorSetup.get(i)[1], doorSetup.get(i)[2]);
 			if (doorSetup.get(i)[0] == -1)
 			{
-				// System.out.println("outside Door");
+				System.out.println("outside Door");
 				++outsideDoors;
 			}
 		}
@@ -517,7 +539,6 @@ public class Building
 				else
 				{
 					System.out.println("Unknown peice killing all the program");
-					System.out.println(parts[i]);
 				}
 			}
 		}
@@ -540,20 +561,8 @@ public class Building
 		{
 			temp.addDoor(doorPos.get(i).getX(), doorPos.get(i).getY(), doors.get(i));
 		}
-		// System.out.println("All the doors");
-		// temp.printDoors();
+		System.out.println("All the doors");
+		temp.printDoors();
 		rooms.add(temp);
-	}
-	public void createGUI()
-	{
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		// add each rooms canvas
-		for (int i = 0; i < rooms.size(); ++i)
-		{
-			frame.add(rooms.get(i));
-		}
-		frame.pack();
-		frame.setVisible(true);
 	}
 }

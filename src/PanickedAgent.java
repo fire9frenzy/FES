@@ -8,89 +8,45 @@ public class PanickedAgent extends Agent
 		setType("P");
 	}
 
-	public Location getNextMove(int doors,Space[][] room)
+	public Location getNextMove(Space[][] room)
 	{
 
 		Location position = super.getPosition();
 		int x = position.getX();
 		int y = position.getY();
-		Location door = getBestDoor(position,doors,room);
 
 		ArrayList<Location> possible = getPossibles(x,y,room);
-
+		int min = room[x][y].getValueAt();
 		Location best = position;
+
+		// System.out.println(super.ableToMove());
 		if(!super.ableToMove())
 		{
+			// System.out.println("C Agent could not Move");
 			super.move();
 			return best;
 		}
+		// System.out.println("C Agent could Move");
 
 		Iterator<Location> iterator = possible.iterator();
 
 		while(iterator.hasNext())
 		{
 			Location temp = iterator.next();
-			if(!room[temp.getX()][temp.getY()].hasAgent())
+			if(room[temp.getX()][temp.getY()].getValueAt() <= min)
 			{
-				// System.out.println("check");
-				if(distance(temp,door) <= distance(best,door))
+				if(!room[temp.getX()][temp.getY()].hasAgent())
 				{
+					min = room[temp.getX()][temp.getY()].getValueAt();
 					best = temp;	
 				}
 			}
+			// System.out.println("check");
 		}
 
 		return best;
-
 	}
-
-
-	private Location getBestDoor(Location position,int doors,Space[][] room)
-	{
-		int min = Integer.MAX_VALUE;
-		ArrayList<Location> temp = new ArrayList<Location>();
-		for(int i = 0; i < room.length; ++i)
-		{
-			for(int j = 0;  j < room[i].length; ++j)
-			{
-				if(room[i][j].getType() == room[i][j].getDoor())
-				{
-					for(int k = 0; k < doors; ++k)
-					{
-						if(room[i][j].getDoorValueAt(k) == min)
-						{
-							min = room[i][j].getDoorValueAt(k);
-							temp.add(new Location(i,j));
-						}
-						else if(room[i][j].getDoorValueAt(k) < min)
-						{
-							min = room[i][j].getDoorValueAt(k);
-							temp = new ArrayList<Location>();
-							temp.add(new Location(i,j));
-						}
-					}
-				}
-			}
-		}
-
-		int index = 0;
-		for(int i = 0; i < temp.size(); i++)
-		{
-			if(distance(position,temp.get(i)) <= distance(position,temp.get(index)))
-			{
-				index = i;
-			}
-		}
-
-		return temp.get(index);
-	}
-
-	private double distance(Location from, Location to)
-	{
-		return Math.sqrt((Math.pow((from.getX()-to.getX()),2) + Math.pow((from.getY()-to.getY()),2)) );
-	}
-
-
+	
 	private ArrayList<Location> getPossibles(int x, int y, Space[][] room)
 	{
 		ArrayList<Location> possibles = new ArrayList<Location>();

@@ -39,22 +39,22 @@ public class Simulation
 		lab.initiate();		// new Simulation();
 		// System.out.println(lab);
 		
-		lab.createGUI();
+		// lab.createGUI();
 
 		// used for manual stepping
 		// Scanner scan = new Scanner(System.in);
+		System.out.println(lab);
 
-		do
-		{
-			// System.out.println("update");
-			lab.update();
-			// System.out.println("-------------------------------------------------------");
-			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-			System.out.println(lab);
-			// scan.next();
-			Thread.sleep(500);
-		}
-		while(!lab.isEmpty());
+		// do
+		// {
+		// 	// System.out.println("update");
+		// 	lab.update();
+		// 	// System.out.println("-------------------------------------------------------");
+		// 	// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+		// 	// scan.next();
+		// 	Thread.sleep(500);
+		// }
+		// while(!lab.isEmpty());
 	}
 
 	public static void getValuesFromUsers()
