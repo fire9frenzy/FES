@@ -82,6 +82,9 @@ public class Building
 	private void initiate(Room room, int[] doorPair ,int index)
 	{
 		room.initiateRoom(doorPair, index);
+		// System.out.println(room);
+		// room.printValues();
+		// System.out.println(room);
 		// System.out.println(doorPair[1] + "hello");
 		for(int i = 0; i < room.doorAmount(); i++)
 		{
@@ -103,8 +106,59 @@ public class Building
 			}
 
 			Room next = findRoomWithID(other);
-			initiate(next,pair,index);
+			next.initiateRoom(pair,index);
+			// System.out.println(next);
+			// next.printValues();
 		}
+
+		for(int i = 0; i < room.doorAmount(); i++)
+		{
+			int tempID = room.getDoorID(i);
+			if(tempID == doorPair[0] || tempID == doorPair[1])
+			{
+				// System.out.println(tempID);
+				continue;
+			}
+			int[] pair = getDoorPair(tempID);
+			if(pair[0] == -1 || pair[1] == -1)
+			{
+				continue;
+			}
+			int other = pair[0];
+			if(pair[0] ==  tempID)
+			{
+				other = pair[1];
+			}
+
+			Room next = findRoomWithID(other);
+			for(int j = 0; j < next.doorAmount(); j++)
+			{
+				int tempID2 = next.getDoorID(j);
+				if(tempID2 == pair[0] || tempID2 == pair[1])
+				{
+					// System.out.println(tempID);
+					continue;
+				}
+				int[] pair2 = getDoorPair(tempID2);
+				if(pair2[0] == -1 || pair2[1] == -1)
+				{
+					continue;
+				}
+				int other2 = pair2[0];
+				if(pair2[0] ==  tempID2)
+				{
+					other2 = pair2[1];
+				}
+				Room next2 = findRoomWithID(other2);
+				if(next2.isRoomValuesSet(index))
+				{
+					continue;
+				}
+				// System.out.println("asdasda");
+				initiate(next2,pair2,index);
+			}
+		}
+
 	}
 
 	private Room findRoomWithID(int id)
@@ -386,6 +440,7 @@ public class Building
 		while(sc.hasNext())
 		{
 			String line = sc.nextLine();
+			line = line.trim();
 			if (line.equals("</room>"))
 			{
 				foundEnd = true;
@@ -459,7 +514,8 @@ public class Building
 				}
 				else
 				{
-					System.out.println("Unknown piece killing all the program");
+					System.out.println("Unknown peice killing all the program");
+					System.out.println(parts[i]);
 				}
 			}
 		}

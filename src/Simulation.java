@@ -24,26 +24,24 @@ public class Simulation
 	private static int incrementP = 0;	
 	public static void main(String[] args)
 	{
-		// lab.addRoom(new Room());
-		// lab.addRoom(new Room());
-		// lab.addRoom(new Room());
+
 		getValuesFromUsers();
-		// System.out.println(inputFile.getAbsolutePath());
-		// System.out.println(calmPercentage);
-		// System.out.println(startingP);
-		// System.out.println(incrementP);
 		Building lab = new Building(inputFile);
+		// System.out.println("Placing Agents");
 		lab.placeAgents(startingP,calmPercentage);
+		// System.out.println("initiating weights");
 		lab.initiate();		// new Simulation();
+		// System.out.println(lab);
+		
 		do
 		{
+			System.out.println("update");
 			lab.update();
-			// System.out.println(lab);
 			// System.out.println("-------------------------------------------------------");
 			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
 		while(!lab.isEmpty());
-		// System.out.println(lab);
+		System.out.println(lab);
 	}
 
 	public static void getValuesFromUsers()
