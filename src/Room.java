@@ -644,20 +644,35 @@ public class Room extends Canvas
 
 	private void fireSpread()
 	{
+		ArrayList<Location> newFire = new ArrayList<Location>();
 		for(int i = 0; i < space.length; i++)
 		{
 			for(int j = 0; j < space[i].length; j++)
 			{
 				if(space[i][j].isOnFire())
 				{
-					adjecentFire(new Location(i,j));
+					Iterator<Location> iterator;
+					iterator = adjecentFire(new Location(i,j)).iterator();
+
+					while(iterator.hasNext())
+					{
+						Location temp = iterator.next();
+						newFire.add(temp);
+					}
 				}
 			}
 		}
+
+		for(int i = 0; i < newFire.size(); ++i)
+		{
+			space[newFire.get(i).getX()][newFire.get(i).getY()].setOnFire();
+		}
+
 	}
 
-	private void adjecentFire(Location fire)
+	private ArrayList<Location> adjecentFire(Location fire)
 	{
+		ArrayList<Location> temp = new ArrayList<Location>();
 		for(int i = -1; i < 2; ++i)
 		{
 			for(int j = -1; j < 2; ++j)
@@ -668,12 +683,15 @@ public class Room extends Canvas
 					{
 						if(!space[fire.getX()+i][fire.getY()+j].isOnFire())
 						{
-							space[fire.getX()+i][fire.getY()+j].setOnFire();	
+							temp.add(new Location(fire.getX()+i,fire.getY()+j));
+
 						}
 					}
 				}
 			}
 		}
+
+		return temp;
 	}
 
 }
