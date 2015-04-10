@@ -16,6 +16,8 @@ public class Room extends Canvas
 	private boolean leadOutside = false;
 	private int tileSize = 16;
 	private Color[] colors = new Color[4];
+	private int updates = 0;
+	private boolean onFire = false;
 	// private boolean[] valuesSet;
 	//    0 1 2 3
 	//    _ _ _ _
@@ -121,6 +123,13 @@ public class Room extends Canvas
 
 	public void updateRoom()
 	{
+		if(updates == 15)
+		{
+			if(onFire)
+			{
+				fireSpread();
+			}
+		}
 		Iterator<Agent> iterator = queue.iterator();
 		// System.out.println("queue size" +queue.size());
 		while(iterator.hasNext())
@@ -163,6 +172,7 @@ public class Room extends Canvas
 			// System.out.println("check1");
 
 		}
+		++updates;
 		setAgentQueue();
 	}
 	public void checkAllDoors()
@@ -513,12 +523,6 @@ public class Room extends Canvas
 					// System.out.println("Move that agent!! into room " + name);
 					addAgent(local, a.getType());
 					space[local.getX()][local.getY()].getAgent().setUsedDoor();
-					// System.out.println(local);
-					// a.updatePosition(local);
-					// space[local.getX()][local.getY()].setAgent(a);
-					// queue.add(a);
-					// setAgentQueue();
-					// System.out.println(this);
 					return true;
 				}
 			}
@@ -526,27 +530,7 @@ public class Room extends Canvas
 		// find the doors location
 		return false;
 	}
-	// public void setSize(int w, int h)
-	// {
-	// 	space = new Space[w][h];
-	// 	for (int i = 0; i < space.length; ++i)
-	// 	{
-	// 		for (int j = 0; j < space[i].length; ++j)
-	// 		{
-	// 			if (j == 0 || j == h - 1 || i == 0 || i == w - 1)
-	// 			{
-	// 				space[i][j] = new Space(wall);
-	// 			}
-	// 			else
-	// 			{
-	// 				space[i][j] = new Space(floor);
-	// 				++totalFloors;
-	// 			}
-	// 		}
-	// 	}
-	// 	// System.out.println("The room looks like this\n" + this);
-	// }
-
+	
 	public int doorAmount()
 	{
 		return doorLocation.size();
@@ -570,6 +554,7 @@ public class Room extends Canvas
 
 	public void produceFire()
 	{
+		onFire = true;
 		ArrayList<Location> wallLocation = new ArrayList<Location>();
 		for(int i = 0; i < space.length; ++i)
 		{
@@ -654,5 +639,38 @@ public class Room extends Canvas
 				}
 			}
 		}
+
 	}
+
+	private void fireSpread()
+	{
+		for(int i = 0; i < space.length; i++)
+		{
+			for(int j = 0; j < space[i].length; j++)
+			{
+				if(space[i][j].isOnFire())
+				{
+					adjecentFire(new Location(i,j));
+				}
+			}
+		}
+	}
+
+	private void adjecentFire(Location fire)
+	{
+		for(int i = -1; i < 2; ++i)
+		{
+			for(int j = -1; j < 2; ++j)
+			{
+				if(space[fire.getX()+i][fire.getY()+j].getType() == wall)
+				{
+					if(!space[fire.getX()+i][fire.getY()+j].isOnFire())
+					{
+						space[fire.getX()+i][fire.getY()+j].setOnFire();	
+					}
+				}
+			}
+		}
+	}
+
 }
