@@ -4,11 +4,11 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import java.io.*;
+// import javax.swing.JButton;
+// import javax.swing.JFileChooser;
+// import javax.swing.JFrame;
+// import javax.swing.JLabel;
+// import java.io.*;
 
 import java.io.*;
 import java.awt.*;
@@ -22,10 +22,16 @@ public class Simulation
 	private static double calmPercentage = 50.0;
 	private static int startingP = 0;
 	private static int incrementP = 0;	
-	public static void main(String[] args)
+	public static void main(String[] args) throws InterruptedException
 	{
 
 		getValuesFromUsers();
+		// System.out.println(inputFile.getAbsolutePath());
+		// System.out.println(calmPercentage);
+		// System.out.println(startingP);
+		// System.out.println(incrementP);
+
+
 		Building lab = new Building(inputFile);
 		// System.out.println("Placing Agents");
 		lab.placeAgents(startingP,calmPercentage);
@@ -33,15 +39,22 @@ public class Simulation
 		lab.initiate();		// new Simulation();
 		// System.out.println(lab);
 		
+		lab.createGUI();
+
+		// used for manual stepping
+		// Scanner scan = new Scanner(System.in);
+
 		do
 		{
-			System.out.println("update");
+			// System.out.println("update");
 			lab.update();
 			// System.out.println("-------------------------------------------------------");
 			// System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println(lab);
+			// scan.next();
+			Thread.sleep(500);
 		}
 		while(!lab.isEmpty());
-		System.out.println(lab);
 	}
 
 	public static void getValuesFromUsers()
