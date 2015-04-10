@@ -622,15 +622,16 @@ public class Room extends Canvas
 				{
 					int w = space[i][j].getValueAt();
 					w *= 2;
-					if (w > 255)
-						w = 255;
+					if (w > 180)
+						w = 180;
 					ctx.setColor(new Color(255 - w, 255 - w, 255 - w));
 					ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);
 				}
 				// draw fire
 				if (space[i][j].isOnFire())
 				{
-					
+					ctx.setColor(new Color(255,255,0));
+					ctx.fillRect(tileSize * j, tileSize * i, tileSize, tileSize);		
 				}
 				// draw door numbers
 				
