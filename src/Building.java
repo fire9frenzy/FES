@@ -253,6 +253,15 @@ public class Building
 				type = "P";
 			// pick a room
 			int r = (int)Math.floor(Math.random() * rooms.size());
+			while(rooms.get(r).full())
+			{
+				// System.out.println(rooms.get(r).full());
+				r++;
+				if(r == rooms.size())
+				{
+					r = 0;
+				}
+			}
 			rooms.get(r).setAgent(type);
 		}
 	}
@@ -598,5 +607,16 @@ public class Building
 			}
 		}
 		return "Never Get here";
+	}
+
+	public int getMaxPeople()
+	{
+		int max = 0;
+		for(int i = 0; i < rooms.size(); i++)
+		{
+			// System.out.println(rooms.get(i).getMax());
+			max = max + rooms.get(i).getMax();
+		}
+		return max;
 	}
 }
