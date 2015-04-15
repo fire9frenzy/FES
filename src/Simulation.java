@@ -16,6 +16,7 @@ public class Simulation
 	private static double calmPercentage = 50.0;
 	private static int startingP = 10;
 	private static int incrementP = 10;	
+	private static int max = 10;
 	public static void main(String[] args) throws InterruptedException
 	{
 
@@ -95,17 +96,31 @@ public class Simulation
 		}
 		// used for manual stepping
 		// Scanner scan = new Scanner(System.in);
+		max = lab.getMaxPeople();
+		System.out.println(max);
 		int updateCount = 0;
-		do
+		System.out.println("People\tTurns");
+		for(int count = startingP; count <= max; count = count+incrementP)
 		{
-			++updateCount;
-			lab.update();
-			// scan.next();
-			if (showEvac)
-				Thread.sleep(500);
+			for(int i = 0; i < 10; i++)
+			{
+				updateCount = 0;
+				do
+				{
+					++updateCount;
+					lab.update();
+					// scan.next();
+					if (showEvac)
+						Thread.sleep(500);
+				}
+				while(!lab.isEmpty());
+				lab = new Building(inputFile);
+				lab.placeAgents(count,calmPercentage);
+				lab.initiate();
+				System.out.println(count+"\t"+updateCount);
+			}
+			
 		}
-		while(!lab.isEmpty());
-		System.out.println("Total number of Updates\n" + updateCount);
 	}
 
 	public static void getValuesFromUsers()
