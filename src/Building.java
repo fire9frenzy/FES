@@ -228,6 +228,7 @@ public class Building
 			rooms.get(i).checkAllDoors();
 			rooms.get(i).repaint();
 		}
+		System.out.println(this);
 		// System.out.println(this);
 		// for (int i = 0; i < rooms.size(); i++)
 		// {
@@ -313,9 +314,9 @@ public class Building
 		String out = "";
 		for (int i = 0; i < rooms.size(); ++i)
 		{
-			out += rooms.get(i) + "\n";
+			// out += rooms.get(i) + "\n";
 			// System.out.println("------------------------------------------------------------------");
-			// rooms.get(i).printValues();
+			rooms.get(i).printValues();
 		}
 		return out;
 	}

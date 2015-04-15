@@ -10,6 +10,10 @@ import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 
+// add weighting to the rooms
+// spread fire over the floor/kill people
+// 
+
 public class Simulation
 {
 	private static File inputFile;
